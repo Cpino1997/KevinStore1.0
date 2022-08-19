@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="head :: head"></div>
+</head>
+<body>
+
+<header>
+    <div th:replace="nav :: menuAdmin"></div>
+</header>
+
+<main class="container-md">
+    <section class="row">
+        <section class="col-auto centro p5">
+            <h1>Bienvenido Admin</h1>
+            <small>En Que Te Puedo Ayudar Hoy?</small>
+        </section>
+    </section>
+</main>
+<!-- footer -->
+<footer>
+    <section class="container-fluid abajo">
+        <div th:replace="footer :: footer"></div>
+    </section>
+</footer>
+<!-- footer -->
+</body>
+</html>

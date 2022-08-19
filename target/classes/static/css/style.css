@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  }
+body{
+  background-image:url(https://i.postimg.cc/wMsBCpT0/fondo.webp);
+  }
+
+.centro{
+  margin: auto;
+  text-align:center;
+  }
+h1{
+color: whitesmoke;
+}
+h2{}
+p{}
+
+.p5{
+padding:10%;
+}
+
+/** Pruebas **/
+#grilla-web{
+  width: 90%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  margin: auto;
+  padding 10px 10px;
+
+  }
+
+#grilla-productos{
+  width: 90%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  margin: auto;
+}
+
+.boton{
+  grid-column: 1/3;
+  grid-row: 1/1;
+}
+.card{
+  margin: auto;
+  width: 90%;
+  grid-column: 1/1;
+  grid-row: 2/2;
+  width:100%;
+  text-align: center;
+  font-size: 10px;
+  background: background-color: rgba(0, 0, 255, 0.1);
+  color: black;
+  border-style: solid;
+  border-radius: 10px;
+  font-family: 'monospace';
+  box-shadow: 7px 7px 17px #000;
+  }
+
+.card img {
+  width: 100%;
+  }
+
+.card span{
+  color: #6e6e6e;
+  font-weight: 50
+  }
+/** form-login **/
+
+.form-register {
+  width: 400px;
+  background: #24303c;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+  }
+
+.form-register h4 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align:center;
+  }
+
+.controls {
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid #1f53c5;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white;
+  }
+
+.form-register p {
+  height: 45px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+  }
+
+.form-register a {
+  color: white;
+  text-decoration: none;
+  }
+
+.form-register a:hover {
+  color: white;
+  text-decoration: underline;
+  }
+
+.form-register .botons {
+  width: 100%;
+  background: #1f53c5;
+  border: 15px;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+  font-family: monospace;
+  text-align: center;
+  }
+.form-register .link{
+  color: #1f53c5;
+  }
+
+#registro{display: none;}
+#login{display: block;}
+#carrito{margin: auto;padding 10px 10px;}
+
+.Titulo{
+  text-align: center;
+  margin: 50px;
+  font-family: monospace;
+
+}
+
+.abajo{
+margin-top:15%;
+position: block;
+bottom: 0;
+width: 100%;
+}
+#footer{
+width:100%;}
+
+/** SPAN **/
+.loader span {
+  color: #faebd7;
+  text-shadow: 0 0 0 #faebd7;
+  -webkit-animation: loading 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes loading {
+  to {
+    text-shadow: 20px 0 70px #ff0266;
+    color: #ff0266;
+  }
+}
+.loader span:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+}
+.loader span:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+}
+.loader span:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+}
+.loader span:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+}
+.loader span:nth-child(6) {
+  -webkit-animation-delay: 0.5s;
+}
+.loader span:nth-child(7) {
+  -webkit-animation-delay: 0.6s;
+}
+.loader span:nth-child(8) {
+  -webkit-animation-delay: 0.7s;
+}
+.loader span:nth-child(9) {
+  -webkit-animation-delay: 0.8s;
+}
+
+.loader span:nth-child(10) {
+  -webkit-animation-delay: 0.9s;
+}
+.loader span:nth-child(11) {
+  -webkit-animation-delay: 1s;
+}
+.loader span:nth-child(12) {
+  -webkit-animation-delay: 1.1s;
+}
+.loader span:nth-child(13) {
+  -webkit-animation-delay: 1.2s;
+}
+.loader span:nth-child(14) {
+  -webkit-animation-delay: 1.3s;
+}
+.loader span:nth-child(15) {
+  -webkit-animation-delay: 1.4s;
+}
+.loader span:nth-child(16) {
+  -webkit-animation-delay: 1.5s;
+}
+.loader span:nth-child(17) {
+  -webkit-animation-delay: 1.6s;
+}
+.loader span:nth-child(18) {
+  -webkit-animation-delay: 1.7s;
+}
+.loader span:nth-child(19) {
+  -webkit-animation-delay: 1.8s;
+}
+.loader span:nth-child(20) {
+  -webkit-animation-delay: 1.9s;
+}
+.hidden{
+display:none;
+}
+
+.izquierda{
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  padding-bottom: 10px;
+  margin-right: 15%;
+}
