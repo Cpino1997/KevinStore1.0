@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div th:replace="head :: head"></div>
+</head>
+<body>
+<header>
+</header>
+
+<main>
+  <div class="container">
+    <h1 class="centro p5">Ingresa tus datos de inicio</h1>
+  <form th:action="@{/login}" method="post" class="form-register">
+    <div class="row">
+      <div class="col">
+        <label for="username">Usuario:</label>
+        <input type="text" class="controls form-control" id="username" name="username" aria-label="Usuario">
+      </div>
+      <div class="col">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" class="controls form-control"  aria-label="Password">
+      </div>
+    </div>
+    <div class="row centro">
+      <div class="col">
+          <button class="botons form-control" type="submit">Ingresar</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</main>
+
+<footer>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="head :: head"></div>
+</head>
+
+<body>
+<header>
+<div th:replace="nav :: menu">
+</div>
+</header>
+<main>
+    <section class="row">
+        <div class="col-md centro p5">
+            <i class="fa-solid fa-paw fa-10x"></i>
+            <h1>Kevin Store</h1>
+            <h2>Tu Tienda De Mascotas</h2>
+        </div>
+    </section>
+</main>
+<footer>
+    <section class="container-fluid abajo">
+        <div th:replace="footer :: footer"></div>
+    </section>
+</footer>
+<script th:src="@{/js/inicio.js}"></script>
+</body>
+</html>
