@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-KevinStoreApplication<KevinStore>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.pinolabs.kevinstore.KevinStoreApplication",
+            "projectName": "KevinStore",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

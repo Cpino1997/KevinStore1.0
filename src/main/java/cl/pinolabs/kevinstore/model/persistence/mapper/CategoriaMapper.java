@@ -14,7 +14,7 @@ import cl.pinolabs.kevinstore.model.persistence.entity.Categoria;
 public interface CategoriaMapper {
     @Mappings({
         @Mapping(source = "idCategoria", target = "idCategoria"),
-        @Mapping(source = "nombre", target = "nombre"),
+        @Mapping(source = "nombre", target = "nombre")
 })
 CategoriaDTO toCategoriaDTO(Categoria categoria);
 List<CategoriaDTO> toCategoriaDTOs(List<Categoria> categorias);
