@@ -39,9 +39,9 @@ public class CategoriaRestController {
     @DeleteMapping("/del/{idCategoria}")
     public ResponseEntity delete(@PathVariable("idCategoria") int idCategoria){
         if (service.delete(idCategoria)){
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }

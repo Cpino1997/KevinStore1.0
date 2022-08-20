@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="web pinolabs">
+        <meta name="author" content="PinoLabs">
+        <title>KevinStore.cl</title>
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/css/style.css}" rel="stylesheet">
+        <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+        <script th:src="@{/js/tienda.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
+    </head>
+<body>
+<main>
+<!-- container -->
+<div class="container">
+<!-- Carrito -->
+<div class="centro">
+<!-- Boton modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCarrito" onclick="mostrarLista()">
+Carrito<i class="fa-solid fa-cart-shopping"></i>
+</button><br>
+<!-- Boton modal -->
+<!-- modal -->
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Total</th>
+            <th scope="col">Accion</th>
+            </tr>
+        </thead>
+        <tbody id="carritoCompras">
+        </tbody>
+        <tfoot>
+            <tr>
+            <td colspan=3>Total</td>
+            <td colspan=2 id="totalCompra"></td>
+            </tr>
+        </tfoot>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" onclick="pagar()" class="btn btn-primary">Pagar</button>
+    </div>
+    </div>
+</div>
+</div>
+<!-- modal -->
+</div>
+<!-- Fin Carrito -->
+<br>
+<!-- Tarjeta -->
+<div th:each="producto : ${productos}">
+    <div class="card">
+    <div class="card-header">
+    <i class="fa-solid fa-box fa-10x"></i>
+    <div class="card-title" th:text="${producto.getNombre()}">
+    </div>
+    </div>
+    <div class="card-body">
+        <p class="card-text" th:text="${producto.getPrecio()}"></p>
+        <p class="card-text" th:text="${producto.getSku()}"></p>
+        <p class="card-text"th:text="${producto.categoriaDTO.nombre}"></p>    
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success" th:id="${producto.getIdProducto()}" onclick="agregarProd(this.id)"><i class="fa-solid fa-bars fa-2x"></i>Agregar</a>
+    </div>
+    </div>
+</div> 
+<!-- Tarjeta -->
+</div>
+<!-- container -->
+</main>
+<!-- Scrípts -->
+<script th:inline="javascript">
+const productos = /*[[${productos}]]*/ null;
+
+</script>
+</body>
+</html>

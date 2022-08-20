@@ -39,9 +39,9 @@ public class ClienteRestController {
     @DeleteMapping("/del/{idCliente}")
     public ResponseEntity delete(@PathVariable("idCliente") int idCliente){
         if (service.delete(idCliente)){
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }

@@ -1,8 +1,5 @@
 package cl.pinolabs.kevinstore.model.domain.dto;
 
-import lombok.Data;
-
-
 public class ClienteDTO {
     private Integer idCliente;
     private String rut;

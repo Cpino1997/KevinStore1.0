@@ -1,8 +1,5 @@
 package cl.pinolabs.kevinstore.model.domain.dto;
 
-import lombok.Data;
-
-
 public class ProductoDTO {
     private Integer idProducto;
     private String sku;

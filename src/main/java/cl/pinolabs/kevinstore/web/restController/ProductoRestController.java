@@ -37,9 +37,9 @@ public class ProductoRestController {
     @DeleteMapping("/del/{idProducto}")
     public ResponseEntity delete(@PathVariable("idProducto") int idProducto){
         if (service.delete(idProducto)){
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }
