@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="web pinolabs">
+<meta name="author" content="PinoLabs">
+<title>KevinStore.cl</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<header>
+  <h1><center>Ver Cliente</center></h1>
+</header>
+
+<main>
+  <!--Form Agrega Cli-->
+    <section class="container">
+        <div class="row">
+            <div class="col-md centro">
+                  <label for="Rut" class="form-label">Rut Cliente</label>
+                  <input type="text" class="form-control centro" id="Rut" name="Rut"
+                         th:value="${cliente.getRut()}">
+                </div>
+                    <div class="col-md centro">
+                      <label for="nombre" class="form-label">nombre cliente</label>
+                      <input type="text" class="form-control centro" id="nombre" name="nombre"
+                             th:value="${cliente.getNombre()}">
+                    </div>
+                    <div class="col-md centro">
+                        <label for="numero" class="form-label">numero</label>
+                        <input type="text" class="form-control centro" id="numero" name="numero" 
+                        th:value="${cliente.getNumero()}">
+                        <div class="col-md centro">
+                            <a class="btn btn-primary">Editar</a>
+                            <a th:href="@{/cliente/all}" class="btn btn-primary">volver</a>
+                    </div>
+            </div>
+        </div>
+    </section>
+  <!--Form Agrega Cli-->
+</main>
+
+<!-- footer -->
+<footer>
+</footer>
+<!-- footer -->
+
+<!-- Scrípts -->
+<script>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+<!-- Scrípts -->
+</body>
+</html>

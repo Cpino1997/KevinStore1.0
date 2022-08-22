@@ -26,7 +26,7 @@ public class VentaController {
         model.addAttribute("ventas",
                 service.findAll()
                         .orElse(new ArrayList<VentaDTO>()));
-        return "ventas";
+        return "admin/ventas";
     }
 
     @GetMapping("/{idVenta}")
@@ -34,7 +34,7 @@ public class VentaController {
         model.addAttribute("venta",
                 service.findById(idVenta)
                         .orElse(new VentaDTO()));
-        return "venta";
+        return "admin/venta";
     }
 
     @GetMapping("/new")

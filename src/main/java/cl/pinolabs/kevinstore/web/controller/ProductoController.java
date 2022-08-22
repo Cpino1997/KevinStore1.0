@@ -27,7 +27,7 @@ public class ProductoController {
         model.addAttribute("productos",
                 service.findAll()
                         .orElse(new ArrayList<ProductoDTO>()));
-        return "productos";
+        return "admin/productos";
     }
 
     @GetMapping("/{idProducto}")
@@ -40,7 +40,7 @@ public class ProductoController {
 
     @GetMapping("/new")
     public String create(){
-        return "newProducto";
+        return "admin/newProducto";
     }
 
     @GetMapping("/edit/{idProducto}")

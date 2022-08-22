@@ -1,5 +1,4 @@
-// LET PRODUCTOS = [] ESTA DECLARADO EN LA VISTA DE THYMELEFT, POR LO QUE TRAE TODOS LOS PRODUCTOS DEL CONTROLADOR
-
+// LET PRODUCTOS = [] ESTA DECLARADO EN LA VISTA DE 2THYMELEFT, POR LO QUE TRAE TODOS LOS PRODUCTOS DEL CONTROLADOR
 let lista =[];
 function agregarProd(id){//FUNCION PARA AGREGAR LOS PRODUCTOS Y A SU VEZ VERIFICAR SI ESTAN Y SACAR EL CANTIDAD DEL PRODUCTO Y SU VALOR
     productos.forEach(producto =>{
@@ -10,9 +9,9 @@ function agregarProd(id){//FUNCION PARA AGREGAR LOS PRODUCTOS Y A SU VEZ VERIFIC
             var cant = producto.cantidad;
             var pre = producto.precio;
             var total = cant*pre;
-            producto.total = total;
+            producto.montoTotal = total;
             console.log(total);
-            console.log(producto.total);
+            console.log(producto.montoTotal);
           }else{
             producto.cantidad++;
             var cant = producto.cantidad;
@@ -74,7 +73,7 @@ function obtenerTotales(){// FUNCION PARA OBTENER LOS TOTALES DEL CARRITO EN LA 
   let VentaDTO={
         idVenta : 0,
         productoDTOs : {},
-        idCliente : 1,
+        idCliente : 0,
         clienteDTO :  null,
         montoTotal : totales
 };
@@ -87,36 +86,29 @@ function obtenerTotales(){// FUNCION PARA OBTENER LOS TOTALES DEL CARRITO EN LA 
         montoTotal : totales
       }
     console.log(VentaDTO);// hasta aqui la venta se ve bien.
-    Confirmar(this.VentaDTO);
+    Confirmar();
   } 
-  /*
-  function Confirmar(venta){//para enviar la venta 
-      function exito() {
-        xhr.send(venta);
-        //xhr.send(JSON.stringify(venta)); tampoco como json la agarra :c 
-        console.log(venta);
-      }
-      // funcion para la llamada fallida
-      function error(err) {
-          console.log('Solicitud fallida', err); //los detalles en el objecto "err"
-      }
-      var xhr = new XMLHttpRequest(); //invocar nueva instancia de XMLHttpRequest
-      xhr.onload = exito; // llamar a la funcion exito si exitosa
-      xhr.onerror = error;  // llamar a la funcion error si fallida
-      xhr.open('POST', 'http://localhost:8080/kevinstore/api/venta/save'); // Abrir solicitud GET
-      xhr.send(); // mandar la solicitud al vervidor.
-  }*/
-/*
-function Confirmar(){ //OTRO METODO PARA CONFIRMAR LA VENTA QUE TAMPOCO SIRVE.
-  var xhr = new XMLHttpRequest();
-  xhr.open("post", "http://localhost:8080/kevinstore/venta/save", true);
-  xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-  xhr.send(JSON.stringify(ventaDTO));
-}*/
-function Confirmar(VentaDTO){
-fetch('http://localhost:8080/kevinstore/venta/save', {
-  method: "POST",
-  body: JSON.stringify(VentaDTO),
-  headers: {"Content-type": "application/json;"}
-})
+
+
+  function Confirmar(){
+    fetch("http://localhost:8080/kevinstore/api/venta/save", {
+    
+   // Adding method type
+   method: "POST",
+    
+   // Adding body or contents to send
+   body: JSON.stringify(VentaDTO),
+    
+   // Adding headers to the request
+   headers: {
+       "Content-type": "application/json; charset=UTF-8"
+   }
+});
+alert("Gracias Por Su Compra!");
+window.location.href="http://localhost:8080/kevinstore/success/"
 }
+
+
+
+
+

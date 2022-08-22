@@ -2,6 +2,8 @@ package cl.pinolabs.kevinstore.web.controller;
 
 import cl.pinolabs.kevinstore.model.domain.dto.User;
 import cl.pinolabs.kevinstore.model.domain.service.UserService;
+import cl.pinolabs.kevinstore.web.security.PasswordEncoderGenerator;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -29,7 +31,7 @@ public class LoginController {
     @PostMapping("/save")
     public String save(@ModelAttribute User user) {
         service.save(user);
-        return "redirect:admin/login";
+        return "redirect:/login";
     }
 
 }

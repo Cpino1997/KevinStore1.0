@@ -14,12 +14,56 @@
 <script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-
+<!-- Menu --> 
+<div class="menu">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand me-auto" href="#">kevinstore.cl</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"  th:href="@{/admin}">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/producto/all}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/cliente/all}">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/venta/all}">Ventas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/logout}">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Fin Menu -->
 <main class="container-md">
     <section class="row">
         <section class="col-auto centro p5">
-            <h1>Bienvenido Admin</h1>
+            <h3 class="span loader centro typingEfect">
+              <span class="m">A</span>
+              <span class="m">D</span>
+              <span class="m">M</span>
+              <span class="m">I</span>
+              <span class="m">N</span>
+              <span class="m">I</span>
+              <span class="m">S</span>
+              <span class="m">T</span>
+              <span class="m">R</span>
+              <span class="m">A</span>
+              <span class="m">C</span>
+              <span class="m">I</span>
+              <span class="m">O</span>
+              <span class="m">N</span>
+            </h3>
             <small>En Que Te Puedo Ayudar Hoy?</small>
         </section>
     </section>

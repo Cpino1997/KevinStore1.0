@@ -11,4 +11,9 @@ public class InicioController {
     public String index(){
         return "index";
     }
+
+    @GetMapping("/success")
+    public String success(){
+        return "success";
+    }
 }

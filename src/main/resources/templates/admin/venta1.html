@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="web pinolabs">
+<meta name="author" content="PinoLabs">
+<title>KevinStore.cl</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/js/venta.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<main>
+
+<!-- Menu --> 
+<div class="menu">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand me-auto" href="#">kevinstore.cl</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/tienda}">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Entrar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Fin Menu -->
+
+<!-- select -->
+<div>
+    <select class="form-control" th:field="*{clientes}" id="selectClientes">
+        <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}"
+                th:text="${cliente.nombre}">
+        </option>
+    </select>
+    <br>
+    <button class="btn btn-primary" id="select">Elegir Cliente</button>
+</div>
+<!-- Fin select -->
+
+<!-- Carrito -->
+<h5 class="centro">Lista de Compras</h5>
+
+<table class="table table-stripe table-dark">
+<thead>
+    <tr>
+    <th scope="col">Nombre</th>
+    <th scope="col">Precio</th>
+    <th scope="col">Cantidad</th>
+    <th scope="col">Total</th>
+    <th scope="col">Accion</th>
+    </tr>
+</thead>
+<tbody>
+<tr th:each="producto: ${productos}">
+    <td th:text="${producto.nombre}"></td>
+    <td th:text="${producto.precio}"></td>
+    <td th:text="${producto.cantidad}"></td>
+    <td th:text="${producto.total}"></td>
+    <td>
+        <a class="btn btn-success" th:href="@{/producto/edit/{id}(id=${producto.getIdProducto()})}">Agregar</a>
+    </td>
+</tr>
+</tbody>
+<tfoot>
+    <tr>
+    <td colspan=3>Total</td>
+    <td colspan=2 id="totalCompra"></td>
+    </tr>
+</tfoot>
+</table>
+
+
+<button type="button" class="btn btn-primary" onclick="agregar()">Agregar Producto</button>
+<button type="button" class="btn btn-primary" onclick="pagar()">Pagar</button>
+<!-- Fin Carrito -->
+
+
+
+
+
+
+
+</main>
+<!-- Scrípts -->
+<script th:inline="javascript">
+const productos = /*[[${productos}]]*/ null;
+const clientes = /*[[${clientes}]]*/ null;
+
+document.getElementById('select').onclick = function() {
+    var value = document.getElementById("selectClientes").selectedOptions[0].value;
+    console.log(value);
+}
+</script>
+</body>
+</html>
+

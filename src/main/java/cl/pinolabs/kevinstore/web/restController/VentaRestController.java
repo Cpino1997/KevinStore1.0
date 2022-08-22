@@ -5,6 +5,7 @@ import cl.pinolabs.kevinstore.model.domain.dto.VentaDTO;
 import cl.pinolabs.kevinstore.model.domain.service.CategoriaService;
 import cl.pinolabs.kevinstore.model.domain.service.VentaService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,9 @@ public class VentaRestController {
                 .map(ventaDTO -> new ResponseEntity<>(ventaDTO, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    @PostMapping("/save")
+    @PostMapping(value = "/save",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<VentaDTO> save(@RequestBody VentaDTO ventaDTO){
         return new ResponseEntity<>(service.save(ventaDTO), HttpStatus.OK);
     }
