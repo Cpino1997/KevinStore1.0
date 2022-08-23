@@ -6,7 +6,6 @@ import cl.pinolabs.kevinstore.model.domain.dto.VentaDTO;
 import cl.pinolabs.kevinstore.model.domain.service.ClienteService;
 import cl.pinolabs.kevinstore.model.domain.service.ProductoService;
 import cl.pinolabs.kevinstore.model.domain.service.VentaService;
-import cl.pinolabs.kevinstore.model.persistence.entity.Cliente;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -45,14 +44,14 @@ public class VentaController {
         return "admin/ventas";
     }
 
-    @GetMapping("/{idVenta}")
+    /* @GetMapping("/{idVenta}")
     public String edit(@PathVariable("idVenta") int idVenta, Model model){
         model.addAttribute("venta",
                 service.findById(idVenta)
                         .orElse(new VentaDTO()));
 
         return "admin/venta";
-    }
+    } Ninguna venta puede ser editada ya que son unicas. */
 
     @PostMapping("/save")
     public String save(@ModelAttribute VentaDTO ventaDTO) {

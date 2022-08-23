@@ -9,14 +9,14 @@ if(producto.idProducto == id){
         producto.cantidad=producto.cantidad+1;
         producto.total=producto.cantidad*producto.precio;
         producto.stock=producto.stock-1;
-        console.log(producto);
+        alert("producto agregado!");
     }else{
         console.log("agregar producto");
         producto.cantidad=1;
         producto.total=producto.cantidad*producto.precio;
         producto.stock=producto.stock-1;
         lista.push(producto);
-        console.log(producto);
+        alert("producto agregado!");
     }
 }
 });
@@ -37,8 +37,8 @@ container.innerHTML = `
 ${container.innerHTML}
       <td>${producto.nombre}</td>
       <td>${producto.precio}</td>
-      <td>${producto.cantidad}</td>
-      <td>${producto.total}</td>
+      <td>${producto.cantidad}u</td>
+      <td>$${producto.total}0</td>
       <td><a id="${producto.idProducto}" class="fa-solid fa-trash-can" onclick="deleteProd(this.id);"></a></td>
 `;
 });
@@ -82,10 +82,12 @@ lista.forEach(producto =>{
 let VentaDTO={
     idVenta : 0,
     productoDTOs : {},
-    idCliente : 1,
+    idCliente : 0,
     clienteDTO :  null,
     montoTotal : totales
 };
+
+let idCLi=0;
 function pagar(){ // al precionar el boton pagar se ingresan los datos a la venta
 if(lista.length==0){
     alert("Carrito Vacio, Porfavor Agrege Productos!");
@@ -93,13 +95,14 @@ if(lista.length==0){
 VentaDTO = {
  idVenta : 0,
     productoDTOs : lista,
-    idCliente : 1,
+    idCliente : idCLi,
     clienteDTO : null,
     montoTotal : totales
   }
 console.log(VentaDTO);// hasta aqui la venta se ve bien.
 Confirmar();
 }
+
 }
 
 function Confirmar(){

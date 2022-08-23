@@ -105,7 +105,7 @@
                         <tr th:each="venta: ${ventas}">
                             <td th:text="${venta.idVenta}"></td>
                             <td th:text="${venta.clienteDTO}"></td>
-                            <td th:text="${venta.montoVenta}"></td>
+                            <td>$<a th:text="${venta.montoVenta}"></a>0</td>
                             <td><button th:id="${venta.idVenta}" onclick="verProd(this.id)" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verProductos">Ver Productos</button></td>
                         </tr>
                     </tbody>
@@ -201,8 +201,7 @@
                                         <th th:text="${producto.getNombre()}">Esto es el text</th>
                                         <td>$<a th:text="${producto.getPrecio()}"></a>0</td>
                                         <td><a th:text="${producto.getStock()}"></a>u</td>
-                                        <td>
-                                            <button th:id="${producto.idProducto}" onclick="agregaProd(this.id)" type="button" class="btn btn-primary">Agregar Producto</button>
+                                        <td><button th:id="${producto.idProducto}" onclick="agregaProd(this.id)" type="button" class="btn btn-primary">Agregar Producto</button>
                                         </td>
                                     </tr>
                                     </tbody>

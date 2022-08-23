@@ -18,7 +18,7 @@ function agregaProd(id){
             producto.cantidad=producto.cantidad+1;
             producto.total=producto.cantidad*producto.precio;
             producto.stock=producto.stock-1;
-            console.log(producto);
+            alert("Has agregado "+producto.nombre);
         }else{
             console.log("agregar producto");
             producto.cantidad=1;
@@ -26,6 +26,7 @@ function agregaProd(id){
             producto.stock=producto.stock-1;
             lista.push(producto);
             console.log(producto);
+            alert("Has agregado "+producto.nombre);
         }
     }
 });
@@ -130,16 +131,19 @@ let VentaDTO={
         productoDTOs : {},
         idCliente : 0,
         clienteDTO :  null,
-        montoTotal : 0
+        montoVenta : 0
 };
 
 function pagar(){
+lista.forEach(producto=>{
+    totales = totales + producto.total;
+});
  VentaDTO = {
      idVenta : 0,
         productoDTOs : lista,
         idCliente : id,
         clienteDTO : null,
-        montoTotal : totales
+        montoVenta : totales
       }
       console.log(VentaDTO);// hasta aqui la venta se ve bien.
       Confirmar();
@@ -160,6 +164,6 @@ function pagar(){
          }
       });
       alert("Gracias Por Su Compra!");
-      window.location.href="http://localhost:8080/kevinstore/success/"
+      window.location.href="http://localhost:8080/kevinstore/admin/success"
       }
 

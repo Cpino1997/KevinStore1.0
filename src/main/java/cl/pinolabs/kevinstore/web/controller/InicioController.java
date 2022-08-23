@@ -16,4 +16,8 @@ public class InicioController {
     public String success(){
         return "success";
     }
+
+    @GetMapping("/admin/success")
+    public String adminSuccess(){return "admin/success";}
+
 }

@@ -114,13 +114,26 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="pagar()">Pagar</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLogin" onclick="mostrarLista()">Pagar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Modal Carrito-->
+
+<!-- Modal Cliente-->
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="centro">
+            <a type="button" class="btn btn-primary" th:href="@{/login}">Registrarte</a>
+            <button type="button" class="btn btn-primary" onclick="pagar()">Continuar Como Invitado</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Cliente-->
 </main>
 <!-- Scrípts -->
 <script th:inline="javascript">
