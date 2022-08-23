@@ -14,35 +14,61 @@
 </head>
 
 <body>
-<header>
-  <h1><center>Ver Cliente</center></h1>
-</header>
-
 <main>
   <!--Form Agrega Cli-->
-    <section class="container">
-        <div class="row">
-            <div class="col-md centro">
-                  <label for="Rut" class="form-label">Rut Cliente</label>
-                  <input type="text" class="form-control centro" id="Rut" name="Rut"
-                         th:value="${cliente.getRut()}">
-                </div>
-                    <div class="col-md centro">
-                      <label for="nombre" class="form-label">nombre cliente</label>
-                      <input type="text" class="form-control centro" id="nombre" name="nombre"
-                             th:value="${cliente.getNombre()}">
-                    </div>
-                    <div class="col-md centro">
-                        <label for="numero" class="form-label">numero</label>
-                        <input type="text" class="form-control centro" id="numero" name="numero" 
-                        th:value="${cliente.getNumero()}">
-                        <div class="col-md centro">
-                            <a class="btn btn-primary">Editar</a>
-                            <a th:href="@{/cliente/all}" class="btn btn-primary">volver</a>
-                    </div>
+   <form class="form-register" id="cliente" method="post" th:object="${cliente}" th:action="@{/clientes/save}">
+    <h3 class="span loader centro">
+        <span class="m">E</span>
+        <span class="m">D</span>
+        <span class="m">I</span>
+        <span class="m">T</span>
+        <span class="m">A</span>
+        <span class="m">R</span>
+        <span class="m">&nbsp;</span>
+        <span class="m">C</span>
+        <span class="m">L</span>
+        <span class="m">I</span>
+        <span class="m">E</span>
+        <span class="m">N</span>
+        <span class="m">T</span>
+        <span class="m">E</span>
+      </h3>
+    <br>
+    <div class="row ">
+        <div class="col md-3">
+            <label for="idCliente" class="form-label">ID Cliente:</label>
+            <input class="form-control controls" type="number" id="idCliente" name="idCliente" th:value="${cliente.idCliente}" readonly>
+        </div>
+        
+        <div class="col md-3">
+            <label for="rut" class="form-label">Rut:</label>
+            <input class="form-control controls" type="text" id="rut" name="rut" th:value="${cliente.rut}" readonly>
+        </div>
+        <div class="md-3">
+            <label class="form-label" for="nombre">Nombre Cliente:</label>
+            <input class="form-control controls" type="text" id="nombre" name="nombre" th:value="${cliente.nombre}" >
+        </div>
+        <div class="md-3">
+            <label class="form-label" for="numero">Numero Cliente:</label>
+            <input class="form-control controls" type="number" id="numero" name="numero" th:value="${cliente.numero}" >
+        </div>
+        <div class="col md-3">
+            <label class="form-label" for="direccion">Direccion Cliente:</label>
+            <input class="form-control controls" type="text" id="direccion" name="direccion" th:value="${cliente.direccion}" >
+        </div>
+        <div class="md-3 btn-group r2" role="group">
+            <div>
+                <button class="btn r2 btn-primary" type="submit">Guardar</button>
+            </div>
+            <div>
+                <button class="btn r2 btn-secondary" type="reset">Limpiar</button>
+            </div>
+            <div>
+                <button class="btn r2 btn-secondary" type="reset">Volver</button>
             </div>
         </div>
-    </section>
+    </div>
+</form>
   <!--Form Agrega Cli-->
 </main>
 

@@ -15,7 +15,7 @@ import cl.pinolabs.kevinstore.model.domain.dto.ClienteDTO;
 import cl.pinolabs.kevinstore.model.domain.service.ClienteService;
 
 @Controller
-@RequestMapping("/cliente")
+@RequestMapping("/clientes")
 public class ClienteController {
 
         private final ClienteService service;
@@ -23,7 +23,7 @@ public class ClienteController {
             this.service = service;
         }
 
-        @GetMapping("/all")
+        @GetMapping
         public String findAll(Model model){
             model.addAttribute("clientes",
                     service.findAll()
@@ -31,40 +31,23 @@ public class ClienteController {
             return "admin/clientes";
         }
 
+
         @GetMapping("/{idCliente}")
-        public String findById(@PathVariable("idCliente") int idCliente, Model model){
+        public String edit(@PathVariable("idCliente") int idCliente, Model model){
             model.addAttribute("cliente",
                     service.findById(idCliente)
                             .orElse(new ClienteDTO()));
             return "admin/cliente";
         }
-
-        @GetMapping("/new")
-        public String create(){
-            return "admin/newCliente";
-        }
-
-        @GetMapping("/edit/{idCliente}")
-        public String edit(@PathVariable("idCliente") int idCliente, Model model){
-            model.addAttribute("cliente",
-                    service.findById(idCliente)
-                            .orElse(new ClienteDTO()));
-            return "editCliente";
-        }
-        @PostMapping("/saveAdmin")
-        public String saveAdmin(@ModelAttribute ClienteDTO idCliente){
-            service.save(idCliente);
-            return "redirect:/cliente/all";
-        }
         @PostMapping("/save")
         public String save(@ModelAttribute ClienteDTO idCliente){
             service.save(idCliente);
-            return "redirect:/tienda/";
+            return "redirect:/clientes";
         }
         @GetMapping("/del/{idCliente}")
         public String delete(@PathVariable("idCliente") int idCliente){
             service.delete(idCliente);
-            return "redirect:/cliente/all";
+            return "redirect:/clientes";
         }
 
 

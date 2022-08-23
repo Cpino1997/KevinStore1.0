@@ -6,7 +6,7 @@
   -moz-box-sizing: border-box;
 }
 body{
-  background-image:url(https://i.postimg.cc/wMsBCpT0/fondo.webp);
+  /*background-image:url(https://i.postimg.cc/wMsBCpT0/fondo.webp);*/
 }
 
 h1{
@@ -17,7 +17,9 @@ h2{
   font-family: monospace;
   color:black;
 }
-h3{}
+.h3{
+  text-shadow: 20px 0 70px #ff0266;
+  color: white;}
 p{}
 
 .centro{
@@ -68,13 +70,18 @@ p{}
   display: none;
 }
 .nav-link{
-  color: aliceblue;
+  color: pink;
+  text-shadow: 1px 1px 1px black;
+}
+.nav-link:hover{
+  color: black;
+  text-shadow: 1px 1px 1px black;
 }
 .navbar-brand{
   color: aliceblue;
 }
 .nav-link .active{
-  color: blue;
+  color: purple;
 }
 
 .form-register {
@@ -98,9 +105,7 @@ p{}
 .controls {
   width: 100%;
   background: #24303c;
-  padding: 10px;
   border-radius: 4px;
-  margin-bottom: 16px;
   border: 1px solid #1f53c5;
   font-family: 'calibri';
   font-size: 18px;
@@ -237,4 +242,12 @@ p{}
   50% {
     border-color: transparent
   }
+}
+
+.r2{
+  margin: auto 15px;
+  margin-top: 5px;
+}
+.w80{
+  width: 80%;
 }

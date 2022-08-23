@@ -1,53 +1,24 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="web pinolabs">
 <meta name="author" content="PinoLabs">
 <title>KevinStore.cl</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 <link th:href="@{/css/style.css}" rel="stylesheet">
-<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
-<script th:src="@{/js/inicio.js}"></script>
-<link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<script th:src="@{/js/bootstrap.min.js}"></script>
 <script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 </head>
 <body>
-<!-- Menu --> 
-<div class="menu">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand me-auto" href="#">kevinstore.cl</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"  th:href="@{/admin}">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/producto/all}">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/cliente/all}">Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/venta/all}">Ventas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/logout}">Salir</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-<!-- Fin Menu -->
 <main class="container-md">
+    
     <section class="row">
-        <section class="col-auto centro p5">
+        
+        <section class="col-md centro">
+            <img src="https://i.ibb.co/L50mxLB/logo.png">
             <h3 class="span loader centro typingEfect">
               <span class="m">A</span>
               <span class="m">D</span>
@@ -65,6 +36,23 @@
               <span class="m">N</span>
             </h3>
             <small>En Que Te Puedo Ayudar Hoy?</small>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" th:href="@{/admin}">Admin</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/productos}">Productos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/clientes}">Clientes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/ventas}">Ventas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/logout}">Salir</a>
+                </li>
+              </ul>
         </section>
     </section>
 </main>

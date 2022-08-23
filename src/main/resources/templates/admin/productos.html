@@ -9,15 +9,16 @@
 <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 <link th:href="@{/css/style.css}" rel="stylesheet">
 <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
-<script th:src="@{/js/tienda.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 </head>
 <body>
+
+<header>
   <!-- Menu --> 
-<div class="menu">
+  <div class="menu">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand me-auto" href="#">kevinstore.cl</a>
@@ -30,13 +31,13 @@
                         <a class="nav-link" th:href="@{/admin}">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/producto/all}">Productos</a>
+                        <a class="nav-link" th:href="@{/productos}">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/cliente/all}">Clientes</a>
+                        <a class="nav-link active" aria-current="page"  th:href="@{/clientes}">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/venta/all}">Ventas</a>
+                        <a class="nav-link" th:href="@{/ventas}">Ventas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/logout}">Salir</a>
@@ -45,70 +46,142 @@
             </div>
         </div>
     </nav>
-</div>
-<!-- Fin Menu -->
+  </div>
+  <!-- Fin Menu -->
+</header>
 <main>
-    <h3 class="span loader centro">
-      <span class="m">L</span>
-      <span class="m">I</span>
-      <span class="m">S</span>
-      <span class="m">T</span>
-      <span class="m">A</span>
-      <span class="m">D</span>
-      <span class="m">O</span>
-      <span class="m">&nbsp;</span>
-      <span class="m">D</span>
-      <span class="m">E</span>
-      <span class="m">&nbsp;</span>
-      <span class="m">P</span>
-      <span class="m">R</span>
-      <span class="m">O</span>
-      <span class="m">D</span>
-      <span class="m">U</span>
-      <span class="m">C</span>
-      <span class="m">T</span>
-      <span class="m">O</span>
-      <span class="m">S</span>
-    </h3>
-    <br>
-    <section class="container">
-      <table class="table table-stripe" id="productos">
-        <thead>
-        <tr class="centro">
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>SKU</th>
-          <th>Categoria</th>
-          <th>Accion</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr  class="centro" th:each="producto: ${productos}">
-          <th th:text="${producto.getNombre()}">Esto es el text</th>
-          <td th:text="${producto.getPrecio()}">Esto es el text</td>
-          <td th:text="${producto.getSku()}">Esto es el text</td>
-          <td th:text="${producto.categoriaDTO.nombre}">Esto es el text</td>
-          <td><a th:href="@{/producto/{id}(id=${producto.getIdProducto()})}"><i class="fa-solid fa-user-pen"></i></a>
-            <a th:href="@{/producto/del/{id}(id=${producto.getIdProducto()})}"><i class="fa-solid fa-trash"></i></a></td>
-        </tr>
-        </tbody>
-      </table>
-      <br>
-      <div class="row">
-        <div class="col">
-          <a th:href="@{/producto/new}" class="btn btn-primary">Crear Producto</a>
-        </div>
-        <div class="col-auto">
-          <a th:href="@{/home}" class="btn btn-primary">volver</a>
+  <!-- SPAN lETRAS-->
+  <h3 class="span loader centro">
+    <span class="m">L</span>
+    <span class="m">I</span>
+    <span class="m">S</span>
+    <span class="m">T</span>
+    <span class="m">A</span>
+    <span class="m">D</span>
+    <span class="m">O</span>
+    <span class="m">&nbsp;</span>
+    <span class="m">D</span>
+    <span class="m">E</span>
+    <span class="m">&nbsp;</span>
+    <span class="m">P</span>
+    <span class="m">R</span>
+    <span class="m">O</span>
+    <span class="m">D</span>
+    <span class="m">U</span>
+    <span class="m">C</span>
+    <span class="m">T</span>
+    <span class="m">O</span>
+    <span class="m">S</span>
+  </h3>
+  <!-- SPAN lETRAS-->
+
+  <div class="mask d-flex align-items-center h-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <br>
+        <!-- TABLA -->
+        <section class="container w80">
+          <br>
+          <table class="table table-stripe" id="productos">
+            <table class="table table-hover">
+            <thead>
+            <tr class="centro">
+              <th>SKU</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Accion</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr  class="centro" th:each="producto: ${productos}">
+                <td th:text="${producto.getSku()}">Esto es el text</td>
+                <th th:text="${producto.getNombre()}">Esto es el text</th>
+                <td>$<a th:text="${producto.getPrecio()}"></a>0</td>
+                <td><a th:text="${producto.getStock()}"></a>u</td>
+              <td><a th:href="@{/productos/{id}(id=${producto.getIdProducto()})}"><i class="fa-solid fa-user-pen"></i></a>
+                <a th:href="@{/productos/del/{id}(id=${producto.getIdProducto()})}"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+            </tbody>
+          </table>
+          <!-- TABLA CLIENTES-->
+
+
+          <br>
+          <!-- BOTONES -->
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearProducto">Crear Producto</button>
+            </div>
+            <div class="col-auto">
+              <a th:href="@{/admin}" class="btn btn-primary">volver</a>
+            </div>
+          </div>
+          <!-- BOTONES -->
+        </section>
+        <!-- TABLA -->
+      </div>
+    </div>
+  </div>
+  <!-- Modal Crear Cliente-->
+  <div class="modal fade" id="crearProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+       <div class="modal-body">
+        <form th:action="@{/productos/save}" method="post" th:object="${producto}">
+          <h3 class="span loader centro">
+            <span class="m">A</span>
+            <span class="m">G</span>
+            <span class="m">R</span>
+            <span class="m">E</span>
+            <span class="m">G</span>
+            <span class="m">A</span>
+            <span class="m">R</span>
+            <span class="m">&nbsp;</span>
+            <span class="m">P</span>
+            <span class="m">R</span>
+            <span class="m">O</span>
+            <span class="m">D</span>
+            <span class="m">U</span>
+            <span class="m">C</span>
+            <span class="m">T</span>
+            <span class="m">O</span>
+          </h3>
+          <div class="mb-3">
+            <input type="hidden" class="form-control" id="idProucto" name="idProucto">
+          </div>
+          <div class="mb-3">
+            <label for="sku" class="form-label">sku</label>
+            <input type="text" class="form-control" id="sku" name="sku" placeholder="ALS305689">
+          </div>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Jabon">
+          </div>
+          <div class="mb-3">
+            <label for="numero" class="form-label">stock</label>
+            <input type="number" class="form-control" id="stock" name="stock" placeholder="100">
+          </div>
+          <div class="mb-3">
+            <label for="precio" class="form-label">precio</label>
+            <input type="number" class="form-control" id="precio" name="precio" placeholder="15.990">
+          </div>
+          <div class="row top1">
+            <div class="col-md centro">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+              <button type="reset" class="btn btn-secondary">Limpiar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </form>
         </div>
       </div>
-    </section><!-- tabla -->
-  </main>
-<!-- container -->
+    </div>
+  </div>
+  <!-- Modal Crear Cliente-->
+</main>
 <!-- Scrípts -->
 <script th:inline="javascript">
-const productos = /*[[${productos}]]*/ null;
-
 $(document).ready( function () {
 $('#productos').DataTable();
 } );

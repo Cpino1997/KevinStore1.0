@@ -26,5 +26,20 @@ if(venta.idVenta == idd){
   });
 }
 });
-
 }
+
+function obtenerID(id){
+  console.log(id);
+}
+
+function mostrarProductos(){// FUNCION PARA MOSTRAR NUESTRA LISTA DE PRODUCTOS O CARRITO EN LA VISTA
+  let container = document.getElementById("listaProductos");
+  container.innerHTML = ``;
+  productos.forEach(producto =>{
+        container.innerHTML = `
+      ${container.innerHTML}
+          <p>${producto.nombre}</p>
+          <p>${producto.precio}</p>
+          `;
+    });
+  }
