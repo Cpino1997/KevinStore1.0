@@ -164,6 +164,6 @@ lista.forEach(producto=>{
          }
       });
       alert("Gracias Por Su Compra!");
-      window.location.href="http://localhost:8080/kevinstore/admin/success"
+        window.location.href = "/kevinstore/admin/success";
       }
 

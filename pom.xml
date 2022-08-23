@@ -85,6 +85,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<excludes>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>package</phase>
+							<goals><goal>copy-dependencies</goal></goals>
+						</execution>
 						<!--						<exclude>-->
 						<!--							<groupId>org.projectlombok</groupId>-->
 						<!--							<artifactId>lombok</artifactId>-->

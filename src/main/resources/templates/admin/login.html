@@ -16,6 +16,7 @@
 <body>
 <main>
 <div class="container">
+
 <form th:action="@{/login}" method="post" class="form-register" id="login" >
   <h1 class="centro ">Ingreso</h1>
   <div class="row p5">
@@ -38,28 +39,6 @@
   </div>
 </form>
 
-<form th:action="@{/login/save}" method="post" class="form-register" id="registro" >
-  <h1 class="centro ">Registro</h1>
-  <div class="row p5">
-    <div class="col">
-      <label for="username">Usuario:</label>
-      <input type="text" class="controls form-control" id="username" name="username" aria-label="Usuario">
-    </div>
-    <div class="col">
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" class="controls form-control "  aria-label="Password">
-    </div>
-
-  </div>
-  <div class="row centro">
-    <div class="col">
-      <a class="botons form-control" onclick="showLog()" href="#login" >Ingresar</a>
-    </div>
-    <div class="col">
-        <button class="botons form-control" type="submit" onclick="alerta()">Registrar</button>
-    </div>
-  </div>
-</form>
 
 </div>
 </main>

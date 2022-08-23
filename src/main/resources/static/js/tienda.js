@@ -5,13 +5,11 @@ productos.forEach(producto =>{
 if(producto.idProducto == id){
     console.log("producto encontrado");
     if(lista.includes(producto)) {
-        console.log("agregar cantidad");
         producto.cantidad=producto.cantidad+1;
         producto.total=producto.cantidad*producto.precio;
         producto.stock=producto.stock-1;
         alert("producto agregado!");
     }else{
-        console.log("agregar producto");
         producto.cantidad=1;
         producto.total=producto.cantidad*producto.precio;
         producto.stock=producto.stock-1;
@@ -27,7 +25,7 @@ function mostrarLista(){// FUNCION PARA MOSTRAR NUESTRA LISTA DE PRODUCTOS O CAR
 let container = document.getElementById("carritoCompras");
 if(lista.length==0){
     container.innerHTML = ``;
-    alert("Carrito Vacio, Porfavor Agrege Productos!");
+    alert("Carrito Vacio, Porfavor Agrega Tus Productos!");
 }else{
 container.innerHTML = ``;
 lista.forEach(producto =>{
@@ -36,8 +34,8 @@ totales=totales+tot;
 container.innerHTML = `
 ${container.innerHTML}
       <td>${producto.nombre}</td>
-      <td>${producto.precio}</td>
-      <td>${producto.cantidad}u</td>
+      <td>$${producto.precio}0</td>
+      <td>${producto.cantidad}unidades</td>
       <td>$${producto.total}0</td>
       <td><a id="${producto.idProducto}" class="fa-solid fa-trash-can" onclick="deleteProd(this.id);"></a></td>
 `;
@@ -84,25 +82,18 @@ let VentaDTO={
     productoDTOs : {},
     idCliente : 0,
     clienteDTO :  null,
-    montoTotal : totales
+    montoVenta : totales
 };
 
-let idCLi=0;
 function pagar(){ // al precionar el boton pagar se ingresan los datos a la venta
-if(lista.length==0){
-    alert("Carrito Vacio, Porfavor Agrege Productos!");
-}else{
 VentaDTO = {
  idVenta : 0,
     productoDTOs : lista,
-    idCliente : idCLi,
-    clienteDTO : null,
-    montoTotal : totales
+    idCliente : 1,
+    montoVenta : totales
   }
 console.log(VentaDTO);// hasta aqui la venta se ve bien.
 Confirmar();
-}
-
 }
 
 function Confirmar(){
@@ -120,7 +111,7 @@ headers: {
 }
 });
 alert("Gracias Por Su Compra!");
-window.location.href="http://localhost:8080/kevinstore/success/"
+window.location.href = "/kevinstore/success";
 }
 
 
