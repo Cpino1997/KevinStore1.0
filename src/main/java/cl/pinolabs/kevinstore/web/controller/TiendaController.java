@@ -26,7 +26,7 @@ public class TiendaController {
         this.clienteservice = clienteservice;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String findAll(Model model){
         model.addAttribute("productos",
             productoservice.findAll()

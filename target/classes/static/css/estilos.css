@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  
+body{
+    background-color: #ececec;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+.head{
+    background-color: rgb(187, 70, 49);
+    padding: 20px;
+    position: block;
+    top: 0;
+    width: 100%;
+    color: white;
+  }
+.footer{
+    background-color: rgb(187, 70, 49);
+    padding: 20px;
+    position: block;
+    top: 0;
+    width: 100%;
+    color: white;
+}
+#grilla-web {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+  }
+
+.card{
+    width:100%;
+    text-align: center;
+    font-size: 10px;
+    background: #24303c;
+    color: whitesmoke;
+    margin: auto;
+    border-style: solid;
+    border-radius: 10px;
+    font-family: 'calibri';
+    box-shadow: 7px 7px 17px #000;
+  }
+
+.card img {
+    width: 100%;
+  }
+
+.card-text{
+    color: #6e6e6e;
+    font-weight: 50;
+  }
+  
+.centro{
+    text-align: center;
+    margin: auto;
+  }
+.card-title{
+    margin: auto;
+    text-align: center;
+    font-family: monospace;
+    color:black;
+  }
+#listOc{
+  display:block;
+}
+#tiendaOc{
+  display:block;
+}
