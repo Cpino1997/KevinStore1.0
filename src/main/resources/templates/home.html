@@ -15,118 +15,44 @@
 </head>
 <body>
 <main>
+<section class="col-md centro">
+    <img class="centro" src="https://i.ibb.co/L50mxLB/logo.png">
+    <h3 class="span loader centro typingEfect">
+        <span class="m">K</span>
+        <span class="m">E</span>
+        <span class="m">V</span>
+        <span class="m">I</span>
+        <span class="m">N</span>
+        <span class="m">S</span>
+        <span class="m">T</span>
+        <span class="m">O</span>
+        <span class="m">R</span>
+        <span class="m">E</span>
+        <span class="m">.</span>
+        <span class="m">C</span>
+        <span class="m">L</span>
+    </h3>
+    <small>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/home}">Inicio</a>
+        </li>
 
-<!-- grilla productos-->
-<section class="wrapper centro">
-    <!-- Menu -->   
-<div class="menu">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand me-auto" href="#">kevinstore.cl</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/tienda}">Tienda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/admin}">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/logout}">Salir</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-<!-- Menu -->
-<div></div>
-<div></div>
-<!-- Boton -->
-<div>
-    <!-- Carrito -->
-    <div class="centro">
-    <!-- Boton modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCarrito" onclick="mostrarLista()">
-    Carrito<i class="fa-solid fa-cart-shopping"></i>
-    </button><br>
-    <!-- Boton modal -->
-    <!-- modal -->
-    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Total</th>
-                <th scope="col">Accion</th>
-                </tr>
-            </thead>
-            <tbody id="carritoCompras">
-            </tbody>
-            <tfoot>
-                <tr>
-                <td colspan=3>Total</td>
-                <td colspan=2 id="totalCompra"></td>
-                </tr>
-            </tfoot>
-            </table>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" onclick="pagar()" class="btn btn-primary">Pagar</button>
-        </div>
-        </div>
-    </div>
-    </div>
-    <!-- modal -->
-    </div>
-    <!-- Fin Carrito -->
-</div>
-<!-- Boton -->
-<br>
-<div class="productos">
-    <!-- Tarjeta -->
-<div th:each="producto : ${productos}">
-    <div class="card">
-    <div class="card-header">
-    <i class="fa-solid fa-box fa-10x"></i>
-    <div class="card-title" th:text="${producto.getNombre()}">
-    </div>
-    </div>
-    <div class="card-body">
-        <p class="card-text" th:text="${producto.getPrecio()}"></p>
-        <p class="card-text" th:text="${producto.getSku()}"></p>
-        <p class="card-text"th:text="${producto.categoriaDTO.nombre}"></p>    
-    </div>
-    <div class="card-footer">
-        <a class="btn btn-success" th:id="${producto.getIdProducto()}" onclick="agregarProd(this.id)"></i>Agregar</a>
-    </div>
-    </div>
-</div> 
-<!-- Tarjeta -->
-</div>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/tienda}">Tienda</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/admin}">Admin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/logout}">Salir</a>
+        </li>
+    </ul>
+    </small>
 </section>
-<!-- grilla productos-->
-
 </main>
 <!-- Scrípts -->
 <script th:inline="javascript">
-const productos = /*[[${productos}]]*/ null;
 
 </script>
 </body>

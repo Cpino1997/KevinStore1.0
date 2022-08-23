@@ -1,9 +1,12 @@
 package cl.pinolabs.kevinstore.web.controller;
 
+import cl.pinolabs.kevinstore.model.domain.dto.ClienteDTO;
 import cl.pinolabs.kevinstore.model.domain.dto.ProductoDTO;
 import cl.pinolabs.kevinstore.model.domain.dto.VentaDTO;
+import cl.pinolabs.kevinstore.model.domain.service.ClienteService;
 import cl.pinolabs.kevinstore.model.domain.service.ProductoService;
 import cl.pinolabs.kevinstore.model.domain.service.VentaService;
+import cl.pinolabs.kevinstore.model.persistence.entity.Cliente;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -18,11 +21,13 @@ public class VentaController {
 
     private final VentaService service;
     private final ProductoService productoservice;
+    private final ClienteService clienteservice;
     Log logger = LogFactory.getLog(VentaController.class);
 
-    public VentaController(VentaService service,ProductoService productoservice) {
+    public VentaController(VentaService service,ProductoService productoservice,ClienteService clienteservice) {
         this.service = service;
         this.productoservice =productoservice;
+        this.clienteservice = clienteservice;
     }
 
     @GetMapping
@@ -33,6 +38,9 @@ public class VentaController {
         model.addAttribute("productos",
             productoservice.findAll()
                 .orElse(new ArrayList<ProductoDTO>()));
+        model.addAttribute("clientes",
+                clienteservice.findAll()
+                        .orElse(new ArrayList<ClienteDTO>()));
                         
         return "admin/ventas";
     }

@@ -25,16 +25,16 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="menu">
+            <div class="collapse navbar-collapse centro" id="menu">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/admin}">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/productos}">Productos</a>
+                        <a class="nav-link active" aria-current="page"  th:href="@{/productos}">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"  th:href="@{/clientes}">Clientes</a>
+                        <a class="nav-link" th:href="@{/clientes}">Clientes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/ventas}">Ventas</a>
@@ -75,6 +75,7 @@
   </h3>
   <!-- SPAN lETRAS-->
 
+  <!-- Contenedor -->
   <div class="mask d-flex align-items-center h-100">
     <div class="container">
       <div class="row justify-content-center">
@@ -82,8 +83,8 @@
         <!-- TABLA -->
         <section class="container w80">
           <br>
-          <table class="table table-stripe" id="productos">
-            <table class="table table-hover">
+          <table class="table table-stripe" >
+            <table class="table table-hover" id="productos">
             <thead>
             <tr class="centro">
               <th>SKU</th>
@@ -104,6 +105,7 @@
             </tr>
             </tbody>
           </table>
+          </table>
           <!-- TABLA CLIENTES-->
 
 
@@ -119,11 +121,14 @@
           </div>
           <!-- BOTONES -->
         </section>
+
         <!-- TABLA -->
       </div>
     </div>
   </div>
-  <!-- Modal Crear Cliente-->
+  <!-- Contenedor -->
+
+  <!-- Modal Crear Producto-->
   <div class="modal fade" id="crearProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -178,7 +183,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal Crear Cliente-->
+  <!-- Modal Crear Producto-->
 </main>
 <!-- Scrípts -->
 <script th:inline="javascript">

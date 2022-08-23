@@ -2,44 +2,164 @@ function agregar(){
 	console.log("hola");
 }
 
-function pagar(){
-	console.log("chao");
-}
-let idd=0;
-function obtenerId(id){
-	idd=id;
-	mostrarLista(idd);
+
+
+function verProd(id){
+    console.log(id);
+    mostrarLista(id);
 }
 
-function mostrarLista(){// FUNCION PARA MOSTRAR NUESTRA LISTA DE PRODUCTOS O CARRITO EN LA VISTA
-let container = document.getElementById("listaProductos");
+function agregaProd(id){
+    productos.forEach(producto =>{
+    if(producto.idProducto == id){
+        console.log("producto encontrado");
+        if(lista.includes(producto)) {
+            console.log("agregar cantidad");
+            producto.cantidad=producto.cantidad+1;
+            producto.total=producto.cantidad*producto.precio;
+            producto.stock=producto.stock-1;
+            console.log(producto);
+        }else{
+            console.log("agregar producto");
+            producto.cantidad=1;
+            producto.total=producto.cantidad*producto.precio;
+            producto.stock=producto.stock-1;
+            lista.push(producto);
+            console.log(producto);
+        }
+    }
+});
+}
+
+let lista=[];
+
+function mostrarLista(id){
+let container = document.getElementById("listaCompras");
 container.innerHTML = ``;
 ventas.forEach(venta =>{
-if(venta.idVenta == idd){
+if(venta.idVenta == id){
     console.log(venta.productoDTOs);
      venta.productoDTOs.forEach(productoDTO =>{
-			container.innerHTML = `
+		container.innerHTML = `
 		${container.innerHTML}
         <td>${productoDTO.nombre}</td>
-        <td>${productoDTO.precio}</td>
+        <td>$<a>${productoDTO.precio}</a>0</td>
         `;
   });
 }
 });
 }
 
-function obtenerID(id){
-  console.log(id);
+
+
+function verCarrito(){
+let container = document.getElementById("carr");
+console.log("pago de productos");
+if(lista.length==0){ 
+    container.innerHTML = ``;
+    alert("Carrito Vacio, Porfavor Agrege Productos!");
+}else{   
+container.innerHTML = ``;
+lista.forEach(producto =>{
+    container.innerHTML = `
+      ${container.innerHTML}
+      <td>${producto.nombre}</td>
+      <td>$${producto.precio}0</td>
+      <td>${producto.cantidad}u</td>
+      <td>$${producto.total}0</td>
+      <td><a id="${producto.idProducto}" class="fa-solid fa-trash-can" onclick="deleteProd(this.id);">borrar</a></td>
+    `;
+    });
+}
+obtenerTotales();
 }
 
-function mostrarProductos(){// FUNCION PARA MOSTRAR NUESTRA LISTA DE PRODUCTOS O CARRITO EN LA VISTA
-  let container = document.getElementById("listaProductos");
-  container.innerHTML = ``;
-  productos.forEach(producto =>{
-        container.innerHTML = `
-      ${container.innerHTML}
-          <p>${producto.nombre}</p>
-          <p>${producto.precio}</p>
-          `;
+function limpiar(){
+    lista.splice();
+    verCarrito();
+}
+
+function deleteProd(id){
+    lista.forEach(producto =>{
+        if(producto.idProducto == id){
+            if(producto.cantidad == 1){
+                producto.cantidad=producto.cantidad-1;
+                producto.stock = producto.stock+1;
+                producto.total=producto.precio*producto.cantidad;
+                lista.pop();
+                verCarrito();
+            }else{
+                console.log(producto);
+                producto.cantidad=producto.cantidad-1;
+                producto.stock = producto.stock+1;
+                producto.total=producto.precio*producto.cantidad;
+                console.log(lista);
+                verCarrito();
+            }
+        }
     });
-  }
+}
+let totales = 0;
+function obtenerTotales(){
+let container = document.getElementById("totalCompra");
+totales = 0;
+lista.forEach(producto=>{
+    totales = totales + producto.total;
+});
+container.innerHTML = ``;
+container.innerHTML = `
+  ${container.innerHTML}
+  <td colspan=2 id="totalCompra">$${totales}0</td>
+  `;
+
+}
+
+
+let id = 0;
+function selectCliente(){
+    id=document.getElementById("idCliente").value;
+    if(id==0){
+    alert("Error, Debes Seleccionar Un Cliente!")
+    }else{
+    document.getElementById("prodHid").style='display:block';
+    }
+}
+
+let VentaDTO={
+        idVenta : 0,
+        productoDTOs : {},
+        idCliente : 0,
+        clienteDTO :  null,
+        montoTotal : 0
+};
+
+function pagar(){
+ VentaDTO = {
+     idVenta : 0,
+        productoDTOs : lista,
+        idCliente : id,
+        clienteDTO : null,
+        montoTotal : totales
+      }
+      console.log(VentaDTO);// hasta aqui la venta se ve bien.
+      Confirmar();
+}
+
+ function Confirmar(){
+          fetch("http://localhost:8080/kevinstore/api/venta/save", {
+
+         // Adding method type
+         method: "POST",
+
+         // Adding body or contents to send
+         body: JSON.stringify(VentaDTO),
+
+         // Adding headers to the request
+         headers: {
+             "Content-type": "application/json; charset=UTF-8"
+         }
+      });
+      alert("Gracias Por Su Compra!");
+      window.location.href="http://localhost:8080/kevinstore/success/"
+      }
+

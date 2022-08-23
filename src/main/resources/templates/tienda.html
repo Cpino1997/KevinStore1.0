@@ -18,7 +18,7 @@
 
 <!-- grilla productos-->
 <section class="wrapper centro">
-    <!-- Menu -->   
+<!-- Menu -->
 <div class="menu">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
@@ -46,87 +46,81 @@
 
 <!-- Banner -->
 <div class="banner">
-    <img src="https://i.ibb.co/PTsXc2P/18731152.jpg">
+    <div class="p4">
+        <h1>Productos</h1>
+        <!-- Boton -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCarrito" onclick="mostrarLista()">
+        Carrito<i class="fa-solid fa-cart-shopping"></i></button>
+        <!-- Boton -->
+    </div>
 </div>
 <!-- Banner -->
 
-<div></div>
-
-<!-- Carrito -->
-<div class="carrito">
-    <!-- Boton modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCarrito" onclick="mostrarLista()">
-    Carrito<i class="fa-solid fa-cart-shopping"></i>
-    </button><br>
-    <!-- Boton modal -->
-    <!-- modal -->
-    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Tarjetas -->
+<div class="card-deck productos">
+    <!-- Tarjeta -->
+        <div th:each="producto : ${productos}">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-box fa-10x"></i>
+                    <div class="card-title" th:text="${producto.getNombre()}">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Codigo: <a th:text="${producto.getSku()}"></a></p>
+                    <p class="card-text">Categoria: <a th:text="${producto.categoriaDTO.nombre}"></a></p>
+                    <p class="card-text"><a th:text="${producto.getStock()}"></a> Unidades</p>
+                    <p class="card-text">Precio: $<a th:text="${producto.getPrecio()}"></a>0</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-success" th:id="${producto.getIdProducto()}" onclick="agregarProd(this.id)"></i>Agregar</a>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Total</th>
-                <th scope="col">Accion</th>
-                </tr>
-            </thead>
-            <tbody id="carritoCompras">
-            </tbody>
-            <tfoot>
-                <tr>
-                <td colspan=3>Total</td>
-                <td colspan=2 id="totalCompra"></td>
-                </tr>
-            </tfoot>
-            </table>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="pagar()">Pagar</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-        </div>
-    </div>
-    </div>
-    <!-- modal -->
-    </div>
-    <!-- Fin Carrito -->
+    <!-- Tarjeta -->
 </div>
-<!-- Carrito -->
-
-<!-- Tarjeta -->
-<div class="productos">
-    <div th:each="producto : ${productos}">
-        <div class="card">
-        <div class="card-header">
-        <i class="fa-solid fa-box fa-10x"></i>
-        <div class="card-title" th:text="${producto.getNombre()}">
-        </div>
-        </div>
-        <div class="card-body">
-            <p class="card-text" th:text="${producto.getSku()}"></p>
-            <p class="card-text" th:text="${producto.categoriaDTO.nombre}"></p>
-            <p class="card-text"><a th:text="${producto.getStock()}"></a> Unidades</p>
-            <p class="card-text">$<a th:text="${producto.getPrecio()}"></a></p>
-        </div>
-        <div class="card-footer">
-            <a class="btn btn-success" th:id="${producto.getIdProducto()}" onclick="agregarProd(this.id)"></i>Agregar</a>
-        </div>
-        </div>
-    </div> 
-</div>
-<!-- Tarjeta -->
+<!-- Tarjetas -->
 
 </section>
 <!-- grilla productos-->
 
+
+<!-- Modal Carrito-->
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Accion</th>
+                    </tr>
+                    </thead>
+                    <tbody id="carritoCompras">
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan=3>Total</td>
+                        <td colspan=2 id="totalCompra"></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="pagar()">Pagar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Carrito-->
 </main>
 <!-- Scrípts -->
 <script th:inline="javascript">

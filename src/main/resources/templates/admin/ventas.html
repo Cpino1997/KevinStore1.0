@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
+<head id="head">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="web pinolabs">
@@ -26,7 +26,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="menu">
+            <div class="collapse navbar-collapse centro" id="menu">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/admin}">Admin</a>
@@ -51,8 +51,8 @@
   <!-- Fin Menu -->
 </header>
 <main>
-  <!-- SPAN lETRAS-->
-  <h3 class="span loader centro">
+    <!-- SPAN lETRAS-->
+    <h3 class="span loader centro">
     <span class="m">L</span>
     <span class="m">I</span>
     <span class="m">S</span>
@@ -70,132 +70,207 @@
     <span class="m">T</span>
     <span class="m">A</span>
     <span class="m">S</span>
-  </h3>
-  <!-- SPAN lETRAS-->
+    </h3>
+    <!-- SPAN lETRAS-->
 
-  <div class="mask d-flex align-items-center h-100">
-    <div class="container">
-      <div class="row justify-content-center">
-        <br>
-        <!-- TABLA -->
-        <section class="container w80">
-          <br>
-          <table class="table table-stripe" id="productos">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                    <th scope="col">idVenta</th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Monto</th>
-                    <th scope="col">Detalles</th>
-                    </tr>
-                </thead>
-            <tbody>
-                <tr th:each="venta: ${ventas}">
-                    <td th:text="${venta.idVenta}"></td>
-                    <td th:text="${venta.clienteDTO}"></td>
-                    <td th:text="${venta.montoVenta}"></td>
-                    <td><button th:id="${venta.idVenta}" onclick="obtenerId(this.id)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verProductos">Ver Detalles</button>
-                    </td>
-                </tr>
-            </tbody>
-          </table>
-          <!-- TABLA CLIENTES-->
-
-
-          <br>
-          <!-- BOTONES -->
-          <div class="row">
-            <div class="col">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearVenta">Crear Venta</button>
+    <!-- Contenedor -->
+    <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- TABLA VENTAS -->
+                <section class="container w80">
+                  <br>
+                    <!-- BOTONES -->
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearVenta">Crear Venta</button>
+                        </div>
+                        <div class="col-auto">
+                            <a th:href="@{/admin}" class="btn btn-primary">volver</a>
+                        </div>
+                    </div>
+                    <!-- BOTONES -->
+                    <!-- TABLA Venta-->
+                    <table class="table table-stripe" id="productos">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                            <th scope="col">Numero</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Detalles</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <tr th:each="venta: ${ventas}">
+                            <td th:text="${venta.idVenta}"></td>
+                            <td th:text="${venta.clienteDTO}"></td>
+                            <td th:text="${venta.montoVenta}"></td>
+                            <td><button th:id="${venta.idVenta}" onclick="verProd(this.id)" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verProductos">Ver Productos</button></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  <!-- TABLA Venta-->
+                  </table>
+                </section>
+                <!-- TABLA VENTAS -->
             </div>
-            <div class="col-auto">
-              <a th:href="@{/admin}" class="btn btn-primary">volver</a>
-            </div>
-          </div>
-          <!-- BOTONES -->
-        </section>
-        <!-- TABLA -->
-      </div>
-    </div>
-  </div>
-  <!-- Modal Crear Venta-->
-  <div class="modal fade" id="crearVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-       <div class="modal-body">
-        <form th:action="@{/ventas/save}" method="post" th:object="${venta}">
-          <h3 class="span loader centro">
-            <span class="m">A</span>
-            <span class="m">G</span>
-            <span class="m">R</span>
-            <span class="m">E</span>
-            <span class="m">G</span>
-            <span class="m">A</span>
-            <span class="m">R</span>
-            <span class="m">&nbsp;</span>
-            <span class="m">V</span>
-            <span class="m">E</span>
-            <span class="m">N</span>
-            <span class="m">T</span>
-            <span class="m">A</span>
-          </h3>
-          <div class="mb-3">
-            <input type="hidden" class="form-control" id="idVenta" name="idVenta">
-          </div>
-          <div class="mb-3">
-            <label for="idCliente" class="form-label">idCliente</label>
-            <input type="number" class="form-control" id="idCliente" name="idCliente" placeholder="1">
-          </div>
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Total</label>
-            <input type="text" class="form-control" id="montoVenta" name="montoVenta" placeholder="montoVenta">
-          </div>
-          <div class="mb-3">
-            <table class="table table-stripe" id="productos">
-                <table class="table table-hover">
-                <thead>
-                <tr class="centro">
-                  <th>SKU</th>
-                  <th>Nombre</th>
-                  <th>Precio</th>
-                  <th>Stock</th>
-                  <th>Accion</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <tr  class="centro" th:each="producto: ${productos}">
-                    <td th:text="${producto.getSku()}">Esto es el text</td>
-                    <th th:text="${producto.getNombre()}">Esto es el text</th>
-                    <td>$<a th:text="${producto.getPrecio()}"></a>0</td>
-                    <td><a th:text="${producto.getStock()}"></a>u</td>
-                  <td><a class="btn btn-success" onclick="obtenerID(this.id)">Agregar</a></td>
-                </tr>
-                </tbody>
-              </table>
-          </div>
-          <div class="row top1">
-            <div class="col-md centro">
-              <button type="submit" class="btn btn-primary">Enviar</button>
-              <button type="reset" class="btn btn-secondary">Limpiar</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </form>
         </div>
-      </div>
     </div>
-  </div>
-  <!-- Modal Crear Venta-->
+    <!-- Contenedor -->
 
+    <!-- Modal Ver Productos-->
+    <div class="modal fade" id="verProductos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Lista de Productos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table" onload="mostrarLista()">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Precio</th>
+                        </tr>
+                        </thead>
+                        <tbody id="listaCompras">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Ver Productos-->
+
+
+    <!-- Modal Crear Venta-->
+    <div class="modal fade" id="crearVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form >
+                        <h3 class="span loader centro">
+                            <span class="m">A</span>
+                            <span class="m">G</span>
+                            <span class="m">R</span>
+                            <span class="m">E</span>
+                            <span class="m">G</span>
+                            <span class="m">A</span>
+                            <span class="m">R</span>
+                            <span class="m">&nbsp;</span>
+                            <span class="m">V</span>
+                            <span class="m">E</span>
+                            <span class="m">N</span>
+                            <span class="m">T</span>
+                            <span class="m">A</span>
+                        </h3>
+                        <div class="mb-3">
+                            <input type="hidden" class="form-control" id="idVenta" name="idVenta">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="idCliente" class="form-label">Cliente</label>
+                            <br>
+                            <select class="form-control" id="idCliente">
+                                <option value="">Seleccione un cliente</option>
+                                <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}" th:text="${cliente.nombre}"></option>
+                            </select>
+                            <a class="btn botons" onclick="selectCliente()">Seleccionar Cliente</a>
+                        </div>
+                        <div class="mb-3" id="prodHid">
+                            <label for="listaProd" class="form-label">Productos</label>
+                            <div class="table table-stripe" >
+                                <table class="table table-hover" id="listaProd">
+                                    <thead>
+                                    <tr class="centro">
+                                        <th>SKU</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Stock</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  class="centro" th:each="producto: ${productos}">
+                                        <td th:text="${producto.getSku()}">Esto es el text</td>
+                                        <th th:text="${producto.getNombre()}">Esto es el text</th>
+                                        <td>$<a th:text="${producto.getPrecio()}"></a>0</td>
+                                        <td><a th:text="${producto.getStock()}"></a>u</td>
+                                        <td>
+                                            <button th:id="${producto.idProducto}" onclick="agregaProd(this.id)" type="button" class="btn btn-primary">Agregar Producto</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row top1">
+                            <div class="col-md centro">
+                                <button type="button" class="btn btn-primary" onclick="verCarrito()" data-bs-toggle="modal" data-bs-target="#verCarrito">Ver Carrito</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Crear Venta-->
+
+    <!-- Modal Carrito -->
+    <div class="modal fade" id="verCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Accion</th>
+                            </tr>
+                            </thead>
+                            <tbody id="carr">
+                            <td colspan=5 class="centro">Carrito Vacio</td>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan=3>Total</td>
+                                <td colspan=2 id="totalCompra"></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="pagar()">Pagar</button>
+                        <button type="reset" onclick="limpiar()" class="btn btn-secondary">Limpiar Carrito</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Modal Carrito -->
+
+</main>
 <!-- Scrípts -->
 <script th:inline="javascript">
 const ventas = /*[[${ventas}]]*/ null;
 const productos = /*[[${productos}]]*/ null;
+
 $(document).ready( function () {
 $('#ventas').DataTable();
 } );
 </script>
-</main>
 </body>
 </html>

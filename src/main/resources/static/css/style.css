@@ -19,7 +19,7 @@ h2{
 }
 .h3{
   text-shadow: 20px 0 70px #ff0266;
-  color: white;}
+  color: black;}
 p{}
 
 .centro{
@@ -28,6 +28,11 @@ p{}
 }
 .p2{
   padding-top: 5%;
+}
+.p4{
+    padding-top:10%;
+    padding-bottom:10%;
+    margin:auto;
 }
 .p5{
   padding-top: 20%;
@@ -129,7 +134,7 @@ p{}
   text-decoration: underline;
 }
 
-.form-register .botons {
+.botons {
   width: 100%;
   background: #1f53c5;
   border: 15px;
@@ -250,4 +255,8 @@ p{}
 }
 .w80{
   width: 80%;
+}
+
+#prodHid{
+    display:none;
 }
