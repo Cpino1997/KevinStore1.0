@@ -44,6 +44,21 @@ public class VentaController {
         return "admin/ventas";
     }
 
+    @GetMapping("/test")
+    public String test(Model model){
+        model.addAttribute("ventas",
+                service.findAll()
+                        .orElse(new ArrayList<VentaDTO>()));
+        model.addAttribute("productos",
+                productoservice.findAll()
+                        .orElse(new ArrayList<ProductoDTO>()));
+        model.addAttribute("clientes",
+                clienteservice.findAll()
+                        .orElse(new ArrayList<ClienteDTO>()));
+
+        return "test";
+    }
+
     /* @GetMapping("/{idVenta}")
     public String edit(@PathVariable("idVenta") int idVenta, Model model){
         model.addAttribute("venta",
