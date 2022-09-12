@@ -6,18 +6,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class InicioController {
+public class inicioController {
     @GetMapping
     public String index(){
         return "index";
     }
 
-    @GetMapping("/success")
-    public String success(){
-        return "success";
+    @GetMapping("/app")
+    public String app(){
+        return "app";
     }
 
-    @GetMapping("/admin/success")
-    public String adminSuccess(){return "admin/success";}
+    @GetMapping("/admin")
+    public String adminSuccess(){return "admin";}
+
+
 
 }

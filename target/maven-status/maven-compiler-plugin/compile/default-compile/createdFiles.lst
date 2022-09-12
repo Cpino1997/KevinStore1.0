@@ -4,15 +4,13 @@ cl\pinolabs\kevinstore\model\domain\repository\ClienteDTORepository.class
 cl\pinolabs\kevinstore\model\persistence\crud\RolCrud.class
 cl\pinolabs\kevinstore\model\domain\repository\UserRepository.class
 cl\pinolabs\kevinstore\model\persistence\entity\Categoria.class
-cl\pinolabs\kevinstore\web\controller\InicioController.class
 cl\pinolabs\kevinstore\model\domain\dto\CategoriaDTO.class
-cl\pinolabs\kevinstore\web\controller\LoginController.class
 cl\pinolabs\kevinstore\model\persistence\mapper\ClienteMapper.class
 cl\pinolabs\kevinstore\model\persistence\entity\Venta.class
 cl\pinolabs\kevinstore\model\persistence\entity\UserEntity.class
-cl\pinolabs\kevinstore\web\controller\HomeController.class
 cl\pinolabs\kevinstore\model\domain\service\ProductoService.class
 cl\pinolabs\kevinstore\model\persistence\entity\RolEntity.class
+cl\pinolabs\kevinstore\web\controller\inicioController.class
 cl\pinolabs\kevinstore\model\persistence\repository\ClienteRepository.class
 cl\pinolabs\kevinstore\model\persistence\repository\VentaRepository.class
 cl\pinolabs\kevinstore\model\persistence\mapper\CategoriaMapper.class
@@ -22,13 +20,10 @@ cl\pinolabs\kevinstore\model\persistence\repository\RolRepository.class
 cl\pinolabs\kevinstore\model\persistence\mapper\CategoriaMapperImpl.class
 cl\pinolabs\kevinstore\model\persistence\mapper\ProductosMapper.class
 cl\pinolabs\kevinstore\model\persistence\crud\ClienteCrud.class
-cl\pinolabs\kevinstore\web\controller\ProductoController.class
 cl\pinolabs\kevinstore\web\restController\ProductoRestController.class
 cl\pinolabs\kevinstore\model\domain\repository\VentaDTORepository.class
 cl\pinolabs\kevinstore\model\domain\repository\RolRepository.class
 cl\pinolabs\kevinstore\model\domain\service\UserService.class
-cl\pinolabs\kevinstore\web\controller\VentaController.class
-cl\pinolabs\kevinstore\web\controller\TiendaController.class
 cl\pinolabs\kevinstore\model\persistence\mapper\RolMapperImpl.class
 cl\pinolabs\kevinstore\model\persistence\mapper\VentaMapper.class
 cl\pinolabs\kevinstore\model\persistence\entity\Producto.class
@@ -37,7 +32,6 @@ cl\pinolabs\kevinstore\model\domain\dto\VentaDTO.class
 cl\pinolabs\kevinstore\model\persistence\repository\CategoriaRepository.class
 cl\pinolabs\kevinstore\model\domain\service\ClienteService.class
 cl\pinolabs\kevinstore\model\persistence\crud\ProductoCrud.class
-cl\pinolabs\kevinstore\web\controller\AdminController.class
 cl\pinolabs\kevinstore\model\persistence\mapper\ClienteMapperImpl.class
 cl\pinolabs\kevinstore\model\domain\dto\ProductoDTO.class
 cl\pinolabs\kevinstore\KevinStoreApplication.class
@@ -47,7 +41,6 @@ cl\pinolabs\kevinstore\model\persistence\mapper\UserMapperImpl.class
 cl\pinolabs\kevinstore\model\domain\repository\CategoriaDTORepository.class
 cl\pinolabs\kevinstore\model\domain\dto\ClienteDTO.class
 cl\pinolabs\kevinstore\web\restController\ClienteRestController.class
-cl\pinolabs\kevinstore\web\controller\ClienteController.class
 cl\pinolabs\kevinstore\model\domain\dto\User.class
 cl\pinolabs\kevinstore\model\domain\repository\ProductoDTORepository.class
 cl\pinolabs\kevinstore\model\persistence\crud\VentaCrud.class

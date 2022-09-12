@@ -44,10 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/tienda").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/clientes").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/home", true)
+                .defaultSuccessUrl("/app", true)
                 .permitAll()
                 .and()
                 .logout().permitAll();
