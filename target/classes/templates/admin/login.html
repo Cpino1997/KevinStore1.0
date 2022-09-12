@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="web pinolabs">
+<meta name="author" content="PinoLabs">
+<title>KevinStore.cl</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/js/login.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<main>
+<div class="container">
+
+<form th:action="@{/login}" method="post" class="form-register" id="login" >
+  <h1 class="centro ">Ingreso</h1>
+  <div class="row p5">
+    <div class="col">
+      <label for="username">Usuario:</label>
+      <input type="text" class="controls form-control" id="username" name="username" aria-label="Usuario">
+    </div>
+    <div class="col">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" class="controls form-control "  aria-label="Password">
+    </div>
+  </div>
+  <div class="row centro">
+    <div class="col">
+        <a class="botons form-control" onclick="showReg()" href="#registro">Registrar</a>
+    </div>
+    <div class="col">
+        <button class="botons form-control" type="submit">Ingresar</button>
+    </div>
+  </div>
+</form>
+
+
+</div>
+</main>
+
+<footer>
+
+</footer>
+</body>
+</html>

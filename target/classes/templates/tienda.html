@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="web pinolabs">
+<meta name="author" content="PinoLabs">
+<title>KevinStore.cl</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/js/tienda.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<main>
+
+<!-- grilla productos-->
+<section class="wrapper centro">
+<!-- Menu -->
+<div class="menu">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand me-auto" href="#">kevinstore.cl</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/tienda}">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Entrar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Menu -->
+
+<!-- Banner -->
+<div class="banner">
+    <div class="p4">
+        <h1>Productos</h1>
+        <!-- Boton -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCarrito" onclick="mostrarLista()">
+        Carrito<i class="fa-solid fa-cart-shopping"></i></button>
+        <!-- Boton -->
+    </div>
+</div>
+<!-- Banner -->
+
+<!-- Tarjetas -->
+<div class="card-deck productos">
+    <!-- Tarjeta -->
+        <div th:each="producto : ${productos}">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-box fa-10x"></i>
+                    <div class="card-title" th:text="${producto.getNombre()}">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Codigo: <a th:text="${producto.getSku()}"></a></p>
+                    <p class="card-text">Categoria: <a th:text="${producto.categoriaDTO.nombre}"></a></p>
+                    <p class="card-text"><a th:text="${producto.getStock()}"></a> Unidades</p>
+                    <p class="card-text">Precio: $<a th:text="${producto.getPrecio()}"></a>0</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-success" th:id="${producto.getIdProducto()}" onclick="agregarProd(this.id)"></i>Agregar</a>
+                </div>
+            </div>
+        </div>
+    <!-- Tarjeta -->
+</div>
+<!-- Tarjetas -->
+
+</section>
+<!-- grilla productos-->
+
+
+<!-- Modal Carrito-->
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Accion</th>
+                    </tr>
+                    </thead>
+                    <tbody id="carritoCompras">
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan=3>Total</td>
+                        <td colspan=2 id="totalCompra"></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"  onclick="pagar()" >Pagar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Carrito-->
+
+</main>
+<!-- Scrípts -->
+<script th:inline="javascript">
+const productos = /*[[${productos}]]*/ null;
+const clientes = /*[[${clientes}]]*/ null;
+</script>
+</body>
+</html>
