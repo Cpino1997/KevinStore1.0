@@ -47,13 +47,45 @@ VALUES
 ;
 ```
 
-## Uso
+## Iniciando el backend
+  se puede probar en https://localhost:8080/
 ```bash
 $ git clone https://github.com/PinoLabs/KevinStore.git
 $ mvn clean package install
 $ mvn spring-boot:run
 ```
-
-#Api
-
-/api/categoria
+# Uso de la APi
+  ```bash
+  #Uso Categorias
+ /api/categorias
+     GET -> devuelve un JSON con todas las categorias existentes en la BD.
+     POST -> Recive un JSON con un objeto categoria, se espera un id y nombre. Requiere de autenthication basic en su header y no-cors para la version en linea
+ /api/categorias/{idCategoria}
+    GET -> Devuelve un JSON con el objeto correspondiente al id solicitado. Requiere el idCategoria, autenthication basic en su header y no-cors para la version en linea.
+    DELETE -> Elimina el Objeto de la BD. Requiere de autenthication basic en su header y no-cors para la version en linea.
+  
+  #Uso Productos
+ /api/productos
+     GET -> devuelve un JSON con todos los productos existentes en la BD.
+     POST -> Recive un JSON con un objeto Producto, se espera un id, idCategoria, nombre, precio, sku, stock. Requiere de autenthication basic en su header y no-cors para la version en linea
+ /api/productos{idProducto}
+    GET -> Devuelve un JSON con el objeto correspondiente al id solicitado. Requiere el idProducto, autenthication basic en su header y no-cors para la version en linea.
+    DELETE -> Elimina el Objeto de la BD.  Requiere el idProducto, autenthication basic en su header y no-cors para la version en linea.
+  
+  #Uso Clientes
+  /api/clientes
+     GET -> devuelve un JSON con todos los clientes existentes en la BD.
+     POST -> Recive un JSON con un objeto Cliente, se espera un id, direccion, nombre, numero, rut Requiere de autenthication basic en su header y no-cors para la version en linea
+ /api/clientes{idCliente}
+    GET -> Devuelve un JSON con el objeto correspondiente al id solicitado. Requiere el idCliente, autenthication basic en su header y no-cors para la version en linea.
+    DELETE -> Elimina el Objeto de la BD.  Requiere el idCliente, autenthication basic en su header y no-cors para la version en linea.
+    
+  #Uso Ventas
+  /api/ventas
+     GET -> devuelve un JSON con todas las ventas existentes en la BD.
+     POST -> Recive un JSON con un objeto Venta, se espera un id, montoVenta, idCliente, lista de productos. Requiere de autenthication basic en su header y no-cors para la version en linea
+ /api/ventas{idVenta}
+    GET -> Devuelve un JSON con el objeto correspondiente al id solicitado. Requiere el idVenta, autenthication basic en su header y no-cors para la version en linea.
+    DELETE -> Elimina el Objeto de la BD.  Requiere el idVenta, autenthication basic en su header y no-cors para la version en linea.
+  
+```
