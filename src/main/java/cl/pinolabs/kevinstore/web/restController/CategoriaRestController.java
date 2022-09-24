@@ -12,7 +12,7 @@ import cl.pinolabs.kevinstore.model.domain.service.CategoriaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categoria")
+@RequestMapping("/api/categorias")
 public class CategoriaRestController {
     private final CategoriaService service;
 
@@ -20,7 +20,7 @@ public class CategoriaRestController {
         this.service = service;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<CategoriaDTO>> findAll(){
         return service.findAll()
                 .map(categorias -> new ResponseEntity<>(categorias, HttpStatus.OK))
@@ -33,13 +33,12 @@ public class CategoriaRestController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping(value = "/save",
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<CategoriaDTO> save(@RequestBody CategoriaDTO categoriaDTO){
         return new ResponseEntity<>(service.save(categoriaDTO), HttpStatus.OK);
     }
-    @DeleteMapping("/del/{idCategoria}")
+    @DeleteMapping("/{idCategoria}")
     public ResponseEntity delete(@PathVariable("idCategoria") int idCategoria){
         if (service.delete(idCategoria)){
             return new ResponseEntity<>(HttpStatus.OK);

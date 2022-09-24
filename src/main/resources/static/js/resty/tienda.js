@@ -92,7 +92,7 @@ let venta={
 }
 
 function postVenta(valor){
-    fetch("https://kevinstore.azurewebsites.net/api/ventas", { // direccion del api donde haremos el fetch
+    fetch("http://localhost:8080/api/ventas", { // direccion del api donde haremos el fetch
        // metodo que utilizaremos. 
        method: "POST",    
        // cuerpo o dato a enviar, en este caso es un objeto llamado Mensaje en formato JSON
@@ -100,7 +100,7 @@ function postVenta(valor){
        // los headers de la peticion
        headers: {
            "Content-Type": "application/json; charset=UTF-8", // el tipo de contenido a enviar
-           "Authorization": "Basic cGlub2xhYnM6Y2FtaWxhYWVkbw==", // la autorizacion para utilizar el api
+           "Authorization": "Basic cGlub2xhYnM6Y2FtaWxhYWVkbw==", // la autorizacion para utilizar el api, debes cambiarla segun tu usuario:contraseña
            "mode": "no-cors", // el modo, en este caso, no-cors, al ser de pruebas no necesita tanta proteccion.
            "Accept": "*/*"
        }

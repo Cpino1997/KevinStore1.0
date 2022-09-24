@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/producto")
+@RequestMapping("/api/productos")
 public class ProductoRestController {
     private final ProductoService service;
 
@@ -18,7 +18,7 @@ public class ProductoRestController {
         this.service = service;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<ProductoDTO>> findAll(){
         return service.findAll()
                 .map(productos -> new ResponseEntity<>(productos, HttpStatus.OK))
@@ -31,13 +31,12 @@ public class ProductoRestController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping(value = "/save",
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<ProductoDTO> save(@RequestBody ProductoDTO productoDTO){
         return new ResponseEntity<>(service.save(productoDTO), HttpStatus.OK);
     }
-    @DeleteMapping("/del/{idProducto}")
+    @DeleteMapping("/{idProducto}")
     public ResponseEntity delete(@PathVariable("idProducto") int idProducto){
         if (service.delete(idProducto)){
             return new ResponseEntity<>(HttpStatus.OK);

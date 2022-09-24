@@ -149,7 +149,7 @@ lista.forEach(producto=>{
 }
 
  function Confirmar(){
-          fetch("http://localhost:8080/kevinstore/api/venta/save", {
+          fetch("http://localhost:8080/api/ventas", {
 
          // Adding method type
          method: "POST",

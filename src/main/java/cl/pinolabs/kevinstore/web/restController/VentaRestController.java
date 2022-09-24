@@ -37,7 +37,7 @@ public class VentaRestController {
     public ResponseEntity<VentaDTO> save(@RequestBody VentaDTO ventaDTO){
         return new ResponseEntity<>(service.save(ventaDTO), HttpStatus.OK);
     }
-    @DeleteMapping("/del/{idVenta}")
+    @DeleteMapping("/{idVenta}")
     public ResponseEntity delete(@PathVariable("idVenta") int idVenta){
         if (service.delete(idVenta)){
             return new ResponseEntity<>(HttpStatus.OK);
