@@ -1,13 +1,8 @@
-# <center>KevinStore</center>
-<center>Created By Cristian Pino.</center>
+# <img src="https://i.ibb.co/L50mxLB/logo.png">
+Somos una tienda E-commerce para mascotas.
+Created By Cristian Pino.
 
-
-Somos una tienda E-commerce para mascotas
-# <center><img src="https://i.ibb.co/gmGz0Qd/success.png"><center>
-#
-Manual de uso para la api de kevinStore! =D
-
-
+# Manual de uso para la api de kevinStore! =D 
 ```sql
 Primero lo primero!
 # Comandos MYSQL para Security
