@@ -1,5 +1,5 @@
 # <center>KevinStore</center>
-<center>Created By PinoLabs.</center>
+<center>Created By Cristian Pino.</center>
 
 
 Somos una tienda E-commerce para mascotas
