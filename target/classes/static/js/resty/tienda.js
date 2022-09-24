@@ -92,7 +92,7 @@ let venta={
 }
 
 function postVenta(valor){
-    fetch("http://kevinstore.azurewebsites.net/api/ventas", { // direccion del api donde haremos el fetch
+    fetch("https://kevinstore.azurewebsites.net/api/ventas", { // direccion del api donde haremos el fetch
        // metodo que utilizaremos. 
        method: "POST",    
        // cuerpo o dato a enviar, en este caso es un objeto llamado Mensaje en formato JSON
