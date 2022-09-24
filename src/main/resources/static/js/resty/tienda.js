@@ -1,5 +1,6 @@
 // LET PRODUCTOS = [] ESTA DECLARADO EN LA VISTA DE 2THYMELEFT, POR LO QUE TRAE TODOS LOS PRODUCTOS DEL CONTROLADOR
 let lista =[];
+
 function agregarProd(id){
 productos.forEach(producto =>{
 if(producto.idProducto == id){
@@ -21,7 +22,9 @@ if(producto.idProducto == id){
 }
 
 let totales=0;
-function mostrarLista(){// FUNCION PARA MOSTRAR NUESTRA LISTA DE PRODUCTOS O CARRITO EN LA VISTA
+
+function mostrarLista(){
+    // FUNCION PARA MOSTRAR NUESTRA LISTA DE PRODUCTOS O CARRITO EN LA VISTA
 let container = document.getElementById("carritoCompras");
 if(lista.length==0){
     container.innerHTML = ``;
@@ -43,6 +46,10 @@ ${container.innerHTML}
 obtenerTotales();
 }
 }
+
+
+
+
 function obtenerTotales(){
 let container = document.getElementById("totalCompra");
 totales = 0;
@@ -57,7 +64,7 @@ container.innerHTML = `
 
 }
   
-function deleteProd(id){//FUNCION PARA ELIMINAR LOS PRODUCTOS DE LA LISTA PERO NO ACTUALIZA LOS TOTALES,EJ SI ELIMINAMOS TODOS LOS ARTICULOS EL TOTAL SERA EL DE LA LISTA MAS EL DE LA ELIMINACION.
+function deleteProd(id){    //FUNCION PARA ELIMINAR LOS PRODUCTOS DE LA LISTA PERO NO ACTUALIZA LOS TOTALES,EJ SI ELIMINAMOS TODOS LOS ARTICULOS EL TOTAL SERA EL DE LA LISTA MAS EL DE LA ELIMINACION.
 lista.forEach(producto =>{
     if(producto.idProducto == id){
         if(producto.cantidad == 1){
@@ -77,44 +84,40 @@ lista.forEach(producto =>{
     }
 });
 }
-let VentaDTO={
-    idVenta : 0,
-    productoDTOs : {},
-    idCliente : 0,
-    clienteDTO :  null,
-    montoVenta : totales
-};
 
-function pagar(){ // al precionar el boton pagar se ingresan los datos a la venta
-VentaDTO = {
- idVenta : 0,
-    productoDTOs : lista,
-    idCliente : 1,
-    montoVenta : totales
-  }
-console.log(VentaDTO);// hasta aqui la venta se ve bien.
-Confirmar();
+let venta={
+    idVenta:0,
+    productoDTOs:{},
+    montoVenta: 0.0
 }
 
-function Confirmar(){
-fetch("http://localhost:8080/kevinstore/api/venta/save", {
-
-// Adding method type
-method: "POST",
-
-// Adding body or contents to send
-body: JSON.stringify(VentaDTO),
-
-// Adding headers to the request
-headers: {
-   "Content-type": "application/json; charset=UTF-8"
-}
-});
-alert("Gracias Por Su Compra!");
-window.location.href = "/kevinstore/success";
+function postVenta(valor){
+    fetch("https://kevinstore.azurewebsites.net/api/ventas", { // direccion del api donde haremos el fetch
+       // metodo que utilizaremos. 
+       method: "POST",    
+       // cuerpo o dato a enviar, en este caso es un objeto llamado Mensaje en formato JSON
+       body: JSON.stringify(valor), 
+       // los headers de la peticion
+       headers: {
+           "Content-Type": "application/json; charset=UTF-8", // el tipo de contenido a enviar
+           "Authorization": "Basic cGlub2xhYnM6Y2FtaWxhYWVkbw==", // la autorizacion para utilizar el api
+           "mode": "no-cors", // el modo, en este caso, no-cors, al ser de pruebas no necesita tanta proteccion.
+           "Accept": "*/*"
+       }
+    });
+    console.log("exito");
 }
 
 
-
-
-
+function pagar(){
+    if(lista.length==0){
+        alert("Carrito Vacio!, agrege productos porfavor");
+    }else{
+        venta ={  
+            idVenta:0,
+            productoDTOs:lista,
+            montoVenta: totales
+        }
+        postVenta(venta);
+    }
+}

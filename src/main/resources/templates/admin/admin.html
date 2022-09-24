@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="web pinolabs">
@@ -9,53 +9,149 @@
 <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 <link th:href="@{/css/style.css}" rel="stylesheet">
 <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/admin.js}"></script>
 <script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-</head>
-<body>
-<main class="container-md">
+<script src="https://code.highcharts.com/highcharts.js"></script>
+</head> 
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark justify-content-center">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="@{/admin}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/productos}">Productos</a>
+            </li>
+                <a class="navbar-brand" href="#">
+                  <img th:src="@{/img/logo.png}" alt="Logo" width="50" height="30" class="d-inline-block align-text-top">
+                </a>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/clientes}">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/logout}">Salir</a>
+            </li>
+          </ul>
+    </nav>
+    <div id="layoutSidenav">
+       
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <br>                   
+                     <!-- Tarjeta con el gráfico de ventas  -->
+                     <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Grafico de ventas
+                        </div>
+                        <div class="card-body">
+                            <div id="datos"></div>
+                        </div>
+                    </div>
+                    <!-- Tarjeta con el grafico de ventas  -->
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <!-- tarjeta Nuevos Productos-->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    Nuevos Productos
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        <div id="listaProductos"></div>
+                                      </ul>
+                                </div>
+                            </div>
+                            <!-- tarjeta Nuevos Productos-->
+                        </div>
+                        <div class="col-xl-6">
+                            <!-- tarjeta Nuevos Clientes-->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    Nuevos Clientes
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        <div id="listaClientes"></div>
+                                      </ul>
+                                </div>
+                            </div>
+                            <!-- tarjeta Nuevos Clientes-->
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; PinoLabs 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terminos &amp; Condiciones</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+<script th:inline="javascript">
+const ventas = /*[[${ventas}]]*/ null;
+const productos = /*[[${productos}]]*/ null;
+const clientes = /*[[${clientes}]]*/ null;
+obtenerDatos();
+obtenerPro();
+obtenerCli();
+
+Highcharts.chart('datos', {
+
+title: {
+  text: 'Ventas Anuales'
+},
+
+yAxis: {
+  title: {
+    text: 'Montos'
+  }
+},
+
+xAxis: {
+    categories : ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+ },
+
+legend: {
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'middle'
+},
+
+series: [{
+    name: 'Ventas',
+    data: (function(){
+       var data = [];
+       for(var i=0; i < datos.length; i++){
+           data.push([datos[i]]);
+       }
+       return data;
+    })()
+ }],
+ credits: {
+     enabled: false
+ },
+responsive: {
+  rules: [{
+    condition: {
+      maxWidth: 500
     
-    <section class="row">
-        
-        <section class="col-md centro">
-            <img src="https://i.ibb.co/L50mxLB/logo.png">
-            <h3 class="span loader centro typingEfect">
-              <span class="m">A</span>
-              <span class="m">D</span>
-              <span class="m">M</span>
-              <span class="m">I</span>
-              <span class="m">N</span>
-              <span class="m">I</span>
-              <span class="m">S</span>
-              <span class="m">T</span>
-              <span class="m">R</span>
-              <span class="m">A</span>
-              <span class="m">C</span>
-              <span class="m">I</span>
-              <span class="m">O</span>
-              <span class="m">N</span>
-            </h3>
-            <small>En Que Te Puedo Ayudar Hoy?</small>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" th:href="@{/admin}">Admin</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" th:href="@{/productos}">Productos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" th:href="@{/clientes}">Clientes</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" th:href="@{/ventas}">Ventas</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" th:href="@{/logout}">Salir</a>
-                </li>
-              </ul>
-        </section>
-    </section>
-</main>
+    }
+  }]
+}
+
+});                
+</script>
 <!-- footer -->
 <!-- footer -->
 </body>

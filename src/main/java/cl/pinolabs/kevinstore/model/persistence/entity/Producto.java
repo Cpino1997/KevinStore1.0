@@ -1,6 +1,11 @@
 package cl.pinolabs.kevinstore.model.persistence.entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "productos")
@@ -10,7 +15,12 @@ public class Producto {
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProducto;
+
+    @NotNull
+    @NotBlank(message = "El codigo sku es requerido")
     private String sku;
+    @NotNull
+    @NotBlank(message = "El codigo sku es requerido")
     private String nombre;
     private Integer stock;
     private float precio;

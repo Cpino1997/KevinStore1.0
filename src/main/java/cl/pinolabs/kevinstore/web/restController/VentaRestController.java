@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/venta")
+@RequestMapping("/api/ventas")
 public class VentaRestController {
     private final VentaService service;
 
@@ -20,7 +20,7 @@ public class VentaRestController {
         this.service = service;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<VentaDTO>> findAll(){
         return service.findAll()
                 .map(ventas -> new ResponseEntity<>(ventas, HttpStatus.OK))
@@ -32,8 +32,7 @@ public class VentaRestController {
                 .map(ventaDTO -> new ResponseEntity<>(ventaDTO, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    @PostMapping(value = "/save",
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<VentaDTO> save(@RequestBody VentaDTO ventaDTO){
         return new ResponseEntity<>(service.save(ventaDTO), HttpStatus.OK);

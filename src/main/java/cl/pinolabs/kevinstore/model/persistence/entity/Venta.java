@@ -19,7 +19,7 @@ public class Venta {
     @Column(name = "id_cliente")
     private Integer idCliente;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
     @ManyToMany

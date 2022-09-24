@@ -1,50 +1,62 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<head xmlns:th="http://www.w3.org/1999/xhtml" id="head">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="web pinolabs">
-<meta name="author" content="PinoLabs">
-<title>KevinStore.cl</title>
-<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-<link th:href="@{/css/style.css}" rel="stylesheet">
-<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
-<script th:src="@{/js/login.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
-<script src="https://kit.fontawesome.com/b6cd2b590e.js" crossorigin="anonymous"></script>
-</head>
-<body>
-<main>
+<html lang="en"><head>
+  <head xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="web pinolabs">
+  <title>kevinstore.cl</title>
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <style>[_nghost-lry-c23]{font-family:Open Sans,sans-serif;color:#121212}</style>
+  </head>
+<body _c_t_common="1">
 <div class="container">
-
-<form th:action="@{/login}" method="post" class="form-register" id="login" >
-  <h1 class="centro ">Ingreso</h1>
-  <div class="row p5">
-    <div class="col">
-      <label for="username">Usuario:</label>
-      <input type="text" class="controls form-control" id="username" name="username" aria-label="Usuario">
-    </div>
-    <div class="col">
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" class="controls form-control "  aria-label="Password">
-    </div>
-  </div>
-  <div class="row centro">
-    <div class="col">
-        <a class="botons form-control" onclick="showReg()" href="#registro">Registrar</a>
-    </div>
-    <div class="col">
-        <button class="botons form-control" type="submit">Ingresar</button>
-    </div>
-  </div>
-</form>
-
-
+  <form class="form-signin" method="post" action="/login">
+    <h2 class="form-signin-heading">Porfavor Ingresa Tus Datos</h2>
+    <p>
+      <label for="username" class="sr-only">Usuario</label>
+      <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+    </p>
+    <p>
+      <label for="password" class="sr-only">Contraseña</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+    </p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Ingreso</button>
+  </form>
 </div>
-</main>
+<div style="display: none" class="ubey-RecordingScreen-count-down ubey-RecordingScreen-count-down-container">
+  <style>
+        .ubey-RecordingScreen-count-down-container {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            top: 0;
+            left: 0;
+            z-index: 9999999999999;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
 
-<footer>
+        .ubey-RecordingScreen-count-down-content {
+            position: absolute;
+            display: flex;
+            top: 50%;
+            left: 50%;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            height: 15em;
+            width: 15em;
+            transform: translate(-50%, -100%);
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+        }
 
-</footer>
+        #ubey-RecordingScreen-count-count {
+            font-size: 14em;
+            transform: translateY(-2%);
+        }
+    </style>
+  <div class="ubey-RecordingScreen-count-down-content">
+    <span id="ubey-RecordingScreen-count-count"></span>
+  </div>
+</div>
 </body>
 </html>

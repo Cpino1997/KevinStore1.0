@@ -3,6 +3,7 @@ package cl.pinolabs.kevinstore.web.restController;
 import cl.pinolabs.kevinstore.model.domain.dto.ProductoDTO;
 import cl.pinolabs.kevinstore.model.domain.service.ProductoService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,9 @@ public class ProductoRestController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/save")
+    @PostMapping(value = "/save",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<ProductoDTO> save(@RequestBody ProductoDTO productoDTO){
         return new ResponseEntity<>(service.save(productoDTO), HttpStatus.OK);
     }
