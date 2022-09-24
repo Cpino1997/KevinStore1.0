@@ -89,3 +89,12 @@ $ mvn spring-boot:run
     DELETE -> Elimina el Objeto de la BD.  Requiere el idVenta, autenthication basic en su header y no-cors para la version en linea.
   
 ```
+
+## Uso Web App
+Su fronted esta creado con una convinacion entre Thymeleft y JS Puro.
+Uso de la aplicacion web:
+- Para ingresar desde la app solo basta con arrancar la aplicacion e ingresar a http://localhost:8080/
+- para ingresar a la tienda solo debemos ir a http://localhost:8080/tienda
+- para ingresar al crud de productos debemos ir a http://localhost:8080/admin
+- para ingresar al crud de clientes debemos ir a http://localhost:8080/clientes
+- para ingresar al crud de ventas debemos ir a http://localhost:8080/ventas
